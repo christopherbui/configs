@@ -13,8 +13,8 @@ blocks:
   - permission
   - user
   - group
-  - size
-  #- date
+#  - size
+#  - date
   - name
 
 # == Color ==

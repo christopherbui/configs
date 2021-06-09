@@ -41,33 +41,47 @@ from libqtile import hook
 @hook.subscribe.startup_once
 def autostart():
     home = os.path.expanduser('~')
-    #subprocess.Popen([home + '/.config/qtile/autostart.sh'])
-    subprocess.Popen([home + '/.config/qtile/brightness.sh'])
+    subprocess.call([home + '/.config/qtile/brightness.sh'])
 
 
 
 mod = "mod1"
 terminal = "alacritty"
+browser = "brave"
+file_manager = "nautilus"
+
 
 keys = [
     # Rofi
     Key([mod], "space", lazy.spawn("rofi -combi-modi drun -font 'Fira Code Nerd Font 18' -show combi -icon-theme 'Papirus' -show-icons")),
 
+
     # Lock Screen
     Key([mod],"l", lazy.spawn("betterlockscreen -l")),
+
 
     # Volume
     Key([], "XF86AudioRaiseVolume", lazy.spawn("amixer -D pulse sset Master 2%+")),
     Key([], "XF86AudioLowerVolume", lazy.spawn("amixer -D pulse sset Master 2%-")),
     Key([], "XF86AudioMute", lazy.spawn("amixer -D pulse sset Master toggle")),
 
+
     # Brightness
     Key([], "XF86MonBrightnessUp", lazy.spawn("brightnessctl set 1%+")),
     Key([], "XF86MonBrightnessDown", lazy.spawn("brightnessctl set 1%-")),
 
+
     # Nightlight
     Key([mod], "n", lazy.spawn("redshift -P -O 5000")),
     Key([mod, "shift"], "n", lazy.spawn("redshift -x")),
+
+
+    # Browser
+    Key([mod], "b", lazy.spawn(browser)),
+
+    # File Manager
+    Key([mod], "n", lazy.spawn(file_manager)),
+
 
     # Switch between windows
     Key([mod], "Tab", lazy.layout.down(), desc="Move focus down"),
@@ -152,9 +166,9 @@ extension_defaults = widget_defaults.copy()
 
 screens = [
     Screen(
-        wallpaper='~/Pictures/n1.jpg',
+        wallpaper='~/Pictures/tokyo.jpg',
         wallpaper_mode='fill',
-        top=bar.Bar(
+        bottom=bar.Bar(
             [
                 widget.GroupBox(
                     font="SF Pro Display",
@@ -176,21 +190,16 @@ screens = [
                 widget.Prompt(
                     font="SF Pro Display",
                     fontsize=18,
-                    foreground="38FC55"
+                    foreground="ebcb8b"
                 ),
-                widget.TextBox(
-                    text=" ",
-                    font="SF Pro Display",
-                    fontsize=18,
-                    foreground="88c0d0"
-                ),
-                widget.WindowName(
-                    font="SF Pro Display",
-                    fontsize=18,
-                    foreground="88c0d0",
-                    max_chars=70
-                ),
+                widget.Spacer(),
                 widget.Systray(),
+                widget.TextBox(
+                    text = "│",
+                    fontsize=14,
+                    padding=5,
+                    foreground="eceff4"
+                ),
                 widget.TextBox(
                     text="",
                     font="SF Pro Display",
