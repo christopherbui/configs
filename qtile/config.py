@@ -79,8 +79,13 @@ keys = [
     # Browser
     Key([mod], "b", lazy.spawn(browser)),
 
+
     # File Manager
-    Key([mod], "n", lazy.spawn(file_manager)),
+    Key([mod], "f", lazy.spawn(file_manager)),
+
+
+    # VS Code
+    Key([mod], "c", lazy.spawn("code")),
 
 
     # Switch between windows
@@ -168,7 +173,7 @@ screens = [
     Screen(
         wallpaper='~/Pictures/tokyo.jpg',
         wallpaper_mode='fill',
-        bottom=bar.Bar(
+        top=bar.Bar(
             [
                 widget.GroupBox(
                     font="SF Pro Display",
