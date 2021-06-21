@@ -41,13 +41,13 @@ from libqtile import hook
 @hook.subscribe.startup_once
 def autostart():
     home = os.path.expanduser('~')
-    subprocess.call([home + '/.config/qtile/brightness.sh'])
+    subprocess.call([home + '/.config/qtile/autostart.sh'])
 
 
 
 mod = "mod1"
 terminal = "alacritty"
-browser = "brave"
+browser = "firefox"
 file_manager = "nautilus"
 
 
@@ -58,6 +58,14 @@ keys = [
 
     # Lock Screen
     Key([mod],"l", lazy.spawn("betterlockscreen -l")),
+
+
+    # Shutdown
+    Key([mod, "shift"], "Delete", lazy.spawn("shutdown now")),
+
+
+    # Reboot
+    Key([mod, "shift"], "r", lazy.spawn("reboot")),
 
 
     # Volume
@@ -153,7 +161,7 @@ layouts = [
     # layout.Bsp(),
     # layout.Matrix(),
     layout.MonadTall(**layout_theme),
-    # layout.MonadWide(),
+    layout.MonadWide(),
     # layout.RatioTile(),
     # layout.Tile(),
     # layout.TreeTab(),
