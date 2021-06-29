@@ -59,6 +59,10 @@ keys = [
     # Lock Screen
     Key([mod],"l", lazy.spawn("betterlockscreen -l")),
 
+
+    # Lock Screen + Suspend
+    Key([mod], "s", lazy.spawn("betterlockscreen -s")),
+
     
     # Shutdown
     Key([mod, "shift"], "Delete", lazy.spawn("shutdown now")),
