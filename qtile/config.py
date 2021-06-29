@@ -246,6 +246,15 @@ screens = [
                     fontsize=18,
                     foreground="ffffff"
                 ),
+                widget.Battery(
+                    font="SF Pro Display",
+                    fontsize=18,
+                    foreground="ffffff",
+                    charge_char="",
+                    discharge_char="",
+                    format="    {char}  {percent:2.0%}"
+
+                ),
                 widget.TextBox(
                     text="     ",
                     font="SF Pro Display",
