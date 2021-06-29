@@ -53,13 +53,13 @@ file_manager = "nautilus"
 
 keys = [
     # Rofi
-    Key([mod], "space", lazy.spawn("rofi -combi-modi drun -font 'Fira Code Nerd Font 18' -show combi -icon-theme 'Papirus' -show-icons")),
+    Key([mod], "space", lazy.spawn("rofi -combi-modi drun -font 'Fira Code Nerd Font 24' -show combi -icon-theme 'Papirus' -show-icons -width 30")),
 
 
     # Lock Screen
     Key([mod],"l", lazy.spawn("betterlockscreen -l")),
 
-
+    
     # Shutdown
     Key([mod, "shift"], "Delete", lazy.spawn("shutdown now")),
 
@@ -71,7 +71,7 @@ keys = [
     # Volume
     Key([], "XF86AudioRaiseVolume", lazy.spawn("amixer -D pulse sset Master 2%+")),
     Key([], "XF86AudioLowerVolume", lazy.spawn("amixer -D pulse sset Master 2%-")),
-    Key([], "XF86AudioMute", lazy.spawn("amixer -D pulse sset Master toggle")),
+    Key([mod], "XF86AudioMute", lazy.spawn("amixer -D pulse sset Master toggle")),
 
 
     # Brightness
@@ -150,8 +150,8 @@ for i in groups:
 
 layout_theme = {"border_width":4,
 "margin":10,
-"border_focus": "d77bc6",
-"border_normal":"81a1c1"}
+"border_focus": "f92672",
+"border_normal":"66d9ef"}
 
 layouts = [
     #layout.Columns(border_focus_stack='#d75f5f'),
@@ -161,7 +161,7 @@ layouts = [
     # layout.Bsp(),
     # layout.Matrix(),
     layout.MonadTall(**layout_theme),
-    layout.MonadWide(),
+    layout.MonadWide(**layout_theme),
     # layout.RatioTile(),
     # layout.Tile(),
     # layout.TreeTab(),
@@ -179,8 +179,6 @@ extension_defaults = widget_defaults.copy()
 
 screens = [
     Screen(
-        wallpaper='~/Pictures/tokyo.jpg',
-        wallpaper_mode='fill',
         top=bar.Bar(
             [
                 widget.GroupBox(
@@ -192,8 +190,8 @@ screens = [
                     padding_y=5,
                     active="#ffffff",
                     inactive="#959595",
-                    this_current_screen_border="5e81ac",
-                    urgent_border="bf616a",
+                    this_current_screen_border="45d5f0",
+                    urgent_border="f92672",
                     disable_drag=True
                 ),
                 widget.Sep(
@@ -203,7 +201,7 @@ screens = [
                 widget.Prompt(
                     font="SF Pro Display",
                     fontsize=18,
-                    foreground="ebcb8b"
+                    foreground="fd971f"
                 ),
                 widget.Spacer(),
                 widget.Systray(),
@@ -211,63 +209,54 @@ screens = [
                     text = "│",
                     fontsize=14,
                     padding=5,
-                    foreground="eceff4"
+                    foreground="ffffff"
                 ),
                 widget.TextBox(
                     text="",
                     font="SF Pro Display",
                     fontsize=18,
-                    foreground="bf616a"
+                    foreground="f92672"
                 ),
                 widget.CPU(
                     font="SF Pro Display",
                     fontsize=18,
-                    foreground="eceff4",
+                    foreground="ffffff",
                     format="CPU {load_percent}%"
                 ),
                 widget.TextBox(
                     text="    ",
                     font="SF Pro Display",
                     fontsize=18,
-                    foreground="a3be8c"
+                    foreground="a6e22e"
                 ),
                 widget.Memory(
                     font="SF Pro Display",
                     fontsize=18,
-                    foreground="eceff4",
+                    foreground="ffffff",
                     format="{MemUsed: } /{MemTotal: } MB"
                 ),
                 widget.TextBox(
                     text="    ",
                     font="SF Pro Display",
                     fontsize=18,
-                    foreground="88c0d0"
+                    foreground="66d9ef"
                 ),
                 widget.PulseVolume(
                     font="SF Pro Display",
                     fontsize=18,
-                    foreground="eceff4"
-                ),
-                widget.Battery(
-                    font="SF Pro Display",
-                    fontsize=18,
-                    charge_char='     ',
-                    discharge_char="     ",
-                    full_char='     ',
-                    format="{char} {percent:2.0%}",
-                    foreground="eceff4"
+                    foreground="ffffff"
                 ),
                 widget.TextBox(
                     text="     ",
                     font="SF Pro Display",
                     fontsize=18,
-                    foreground="b48ead"
+                    foreground="ae81ff"
                 ),
                 widget.Clock(
                     font="SF Pro Display",
                     fontsize=18,
                     format="%a  %m/%d/%Y   %H : %M : %S",
-                    foreground="eceff4"
+                    foreground="ffffff"
                 ),
                 widget.Sep(
                     linewidth=0,
@@ -275,8 +264,9 @@ screens = [
                 )
             ],
             28,
-            background = "#2e3440",
+            background = "#272822",
             opacity = 1
+            #margin = [5,12,0,12]
         ),
     ),
 ]
