@@ -53,7 +53,7 @@ file_manager = "nautilus"
 
 keys = [
     # Rofi
-    Key([mod], "space", lazy.spawn("rofi -combi-modi drun -font 'Fira Code Nerd Font 24' -show combi -icon-theme 'Papirus' -show-icons -width 30")),
+    Key([mod], "space", lazy.spawn("rofi -combi-modi drun -font 'Fira Code Nerd Font 20' -show combi -icon-theme 'Papirus' -show-icons")),
 
 
     # Lock Screen
@@ -75,7 +75,7 @@ keys = [
     # Volume
     Key([], "XF86AudioRaiseVolume", lazy.spawn("amixer -D pulse sset Master 2%+")),
     Key([], "XF86AudioLowerVolume", lazy.spawn("amixer -D pulse sset Master 2%-")),
-    Key([mod], "XF86AudioMute", lazy.spawn("amixer -D pulse sset Master toggle")),
+    Key([], "XF86AudioMute", lazy.spawn("amixer -D pulse sset Master toggle")),
 
 
     # Brightness
@@ -207,7 +207,15 @@ screens = [
                     fontsize=18,
                     foreground="fd971f"
                 ),
-                widget.Spacer(),
+                widget.WindowName(
+                    font="SF Pro Display",
+                    fontsize=18,
+                    format="  {name}",
+                    max_char=50,
+                    foreground="ffffff",
+                    background="45d5f0"
+                ),
+                #widget.Spacer(),
                 widget.Systray(),
                 widget.TextBox(
                     text = "│",
