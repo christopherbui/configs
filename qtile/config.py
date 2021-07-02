@@ -53,7 +53,7 @@ file_manager = "nautilus"
 
 keys = [
     # Rofi
-    Key([mod], "space", lazy.spawn("rofi -combi-modi drun -font 'Fira Code Nerd Font 20' -show combi -icon-theme 'Papirus' -show-icons")),
+    Key([mod], "space", lazy.spawn("rofi -combi-modi drun -font 'Fira Code Nerd Font 20' -show drun -icon-theme 'Papirus' -show-icons")),
 
 
     # Lock Screen
@@ -154,8 +154,8 @@ for i in groups:
 
 layout_theme = {"border_width":4,
 "margin":10,
-"border_focus": "f92672",
-"border_normal":"66d9ef"}
+"border_focus": "d8dee9",
+"border_normal":"000000"}
 
 layouts = [
     #layout.Columns(border_focus_stack='#d75f5f'),
@@ -194,8 +194,8 @@ screens = [
                     padding_y=5,
                     active="#ffffff",
                     inactive="#959595",
-                    this_current_screen_border="45d5f0",
-                    urgent_border="f92672",
+                    this_current_screen_border="81a1c1",
+                    urgent_border="c04a55",
                     disable_drag=True
                 ),
                 widget.Sep(
@@ -210,13 +210,15 @@ screens = [
                 widget.WindowName(
                     font="SF Pro Display",
                     fontsize=18,
-                    format="  {name}",
-                    max_char=50,
+                    format="    [ {name} ]",
+                    #max_chars=50,
                     foreground="ffffff",
-                    background="45d5f0"
+                    background="81a1c1"
                 ),
                 #widget.Spacer(),
-                widget.Systray(),
+                widget.Systray(
+                    background="d8dee9"
+                ),
                 widget.TextBox(
                     text = "│",
                     fontsize=14,
@@ -227,7 +229,7 @@ screens = [
                     text="",
                     font="SF Pro Display",
                     fontsize=18,
-                    foreground="f92672"
+                    foreground="c04a55"
                 ),
                 widget.CPU(
                     font="SF Pro Display",
@@ -239,7 +241,7 @@ screens = [
                     text="    ",
                     font="SF Pro Display",
                     fontsize=18,
-                    foreground="a6e22e"
+                    foreground="84be53"
                 ),
                 widget.Memory(
                     font="SF Pro Display",
@@ -251,7 +253,7 @@ screens = [
                     text="    ",
                     font="SF Pro Display",
                     fontsize=18,
-                    foreground="66d9ef"
+                    foreground="5fb8d1"
                 ),
                 widget.PulseVolume(
                     font="SF Pro Display",
@@ -262,8 +264,13 @@ screens = [
                     font="SF Pro Display",
                     fontsize=18,
                     foreground="ffffff",
+                    unknown_char="",
                     charge_char="",
+                    full_char="",
                     discharge_char="",
+                    low_foreground="fd971f",
+                    low_percentage=0.30,
+                    
                     format="    {char}  {percent:2.0%}"
 
                 ),
@@ -271,7 +278,7 @@ screens = [
                     text="     ",
                     font="SF Pro Display",
                     fontsize=18,
-                    foreground="ae81ff"
+                    foreground="cd4eb6"
                 ),
                 widget.Clock(
                     font="SF Pro Display",
@@ -285,7 +292,7 @@ screens = [
                 )
             ],
             28,
-            background = "#272822",
+            background = "#4c566a",
             opacity = 1
             #margin = [5,12,0,12]
         ),
