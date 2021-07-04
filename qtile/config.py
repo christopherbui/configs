@@ -55,49 +55,48 @@ keys = [
     # Rofi
     Key([mod], "space", lazy.spawn("rofi -combi-modi drun -font 'Fira Code Nerd Font 20' -show drun -icon-theme 'Papirus' -show-icons")),
 
-
     # Lock Screen
     Key([mod],"l", lazy.spawn("betterlockscreen -l")),
 
-
     # Lock Screen + Suspend
     Key([mod], "s", lazy.spawn("betterlockscreen -s")),
-
     
     # Shutdown
     Key([mod, "shift"], "Delete", lazy.spawn("shutdown now")),
 
-
     # Reboot
     Key([mod, "shift"], "r", lazy.spawn("reboot")),
-
 
     # Volume
     Key([], "XF86AudioRaiseVolume", lazy.spawn("amixer -D pulse sset Master 2%+")),
     Key([], "XF86AudioLowerVolume", lazy.spawn("amixer -D pulse sset Master 2%-")),
     Key([], "XF86AudioMute", lazy.spawn("amixer -D pulse sset Master toggle")),
 
-
     # Brightness
     Key([], "XF86MonBrightnessUp", lazy.spawn("brightnessctl set 1%+")),
     Key([], "XF86MonBrightnessDown", lazy.spawn("brightnessctl set 1%-")),
-
 
     # Nightlight
     Key([mod], "n", lazy.spawn("redshift -P -O 5000")),
     Key([mod, "shift"], "n", lazy.spawn("redshift -x")),
 
-
     # Browser
     Key([mod], "b", lazy.spawn(browser)),
-
 
     # File Manager
     Key([mod], "f", lazy.spawn(file_manager)),
 
-
     # VS Code
     Key([mod], "c", lazy.spawn("code")),
+
+    # Typora
+    Key([mod], "t", lazy.spawn("typora")),
+
+    # PDF Reader
+    Key([mod], "p", lazy.spawn("evince")),
+
+    # Discord
+    Key([mod], "d", lazy.spawn("discord")),
 
 
     # Switch between windows
@@ -154,7 +153,7 @@ for i in groups:
 
 layout_theme = {"border_width":4,
 "margin":10,
-"border_focus": "d8dee9",
+"border_focus": "dfb02d",
 "border_normal":"000000"}
 
 layouts = [
@@ -189,14 +188,16 @@ screens = [
                     font="SF Pro Display",
                     fontsize=18,
                     highlight_method="block",
-                    rounded=False,
+                    rounded=True,
                     padding_x=5,
                     padding_y=5,
                     active="#ffffff",
-                    inactive="#959595",
-                    this_current_screen_border="81a1c1",
+                    inactive="#585858",
+                    this_current_screen_border="319fe7",
                     urgent_border="c04a55",
-                    disable_drag=True
+                    disable_drag=True,
+                    #margin_x=10,
+                    #spacing=10
                 ),
                 widget.Sep(
                     linewidth=0,
@@ -207,15 +208,19 @@ screens = [
                     fontsize=18,
                     foreground="fd971f"
                 ),
-                widget.WindowName(
-                    font="SF Pro Display",
-                    fontsize=18,
-                    format="    [ {name} ]",
-                    #max_chars=50,
-                    foreground="ffffff",
-                    background="81a1c1"
+                #widget.WindowName(
+                #    font="SF Pro Display",
+                #    fontsize=18,
+                #    format="    [ {name} ]",
+                #    #max_chars=50,
+                #    foreground="ffffff",
+                #    background="81a1c1"
+                #),
+                widget.Image(
+                    filename="~/Downloads/arch2.png",
+                    margin_y=4
                 ),
-                #widget.Spacer(),
+                widget.Spacer(),
                 widget.Systray(
                     background="d8dee9"
                 ),
@@ -291,10 +296,10 @@ screens = [
                     padding=10
                 )
             ],
-            28,
-            background = "#4c566a",
-            opacity = 1
-            #margin = [5,12,0,12]
+            30,
+            background = "#2e3440",
+            opacity = 1,
+            margin = [5,10,-5,10]
         ),
     ),
 ]
