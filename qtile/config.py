@@ -189,8 +189,8 @@ screens = [
                     fontsize=18,
                     highlight_method="block",
                     rounded=True,
-                    padding_x=5,
-                    padding_y=2,
+                    padding_x=4,
+                    padding_y=1,
                     active="#ffffff",
                     inactive="#585858",
                     this_current_screen_border="319fe7",
@@ -218,7 +218,7 @@ screens = [
                 #),
                 widget.Image(
                     filename="~/Downloads/arch2.png",
-                    margin_y=4
+                    margin_y=5
                 ),
                 widget.Spacer(),
                 widget.Systray(
