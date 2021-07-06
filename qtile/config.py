@@ -151,10 +151,10 @@ for i in groups:
         #     desc="move focused window to group {}".format(i.name)),
     ])
 
-layout_theme = {"border_width":4,
-"margin":10,
-"border_focus": "dfb02d",
-"border_normal":"000000"}
+layout_theme = {"border_width":3,
+"margin":8,
+"border_focus": "EA92E1",
+"border_normal":"959dcb"}
 
 layouts = [
     #layout.Columns(border_focus_stack='#d75f5f'),
@@ -190,13 +190,13 @@ screens = [
                     highlight_method="block",
                     rounded=True,
                     padding_x=5,
-                    padding_y=5,
+                    padding_y=2,
                     active="#ffffff",
                     inactive="#585858",
                     this_current_screen_border="319fe7",
                     urgent_border="c04a55",
                     disable_drag=True,
-                    #margin_x=10,
+                    margin_x=5,
                     #spacing=10
                 ),
                 widget.Sep(
@@ -222,7 +222,6 @@ screens = [
                 ),
                 widget.Spacer(),
                 widget.Systray(
-                    background="d8dee9"
                 ),
                 widget.TextBox(
                     text = "│",
@@ -297,9 +296,9 @@ screens = [
                 )
             ],
             30,
-            background = "#2e3440",
+            background = "#20232a",
             opacity = 1,
-            margin = [5,10,-5,10]
+            margin = [5,8,-3,8]
         ),
     ),
 ]
