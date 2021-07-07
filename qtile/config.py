@@ -216,10 +216,6 @@ screens = [
                 #    foreground="ffffff",
                 #    background="81a1c1"
                 #),
-                widget.Image(
-                    filename="~/Downloads/arch2.png",
-                    margin_y=5
-                ),
                 widget.Spacer(),
                 widget.Systray(
                 ),
@@ -298,7 +294,7 @@ screens = [
             30,
             background = "#20232a",
             opacity = 1,
-            margin = [5,8,-3,8]
+            #margin = [5,8,-3,8]
         ),
     ),
 ]
