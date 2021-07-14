@@ -153,8 +153,8 @@ for i in groups:
 
 layout_theme = {"border_width":3,
 "margin":8,
-"border_focus": "EA92E1",
-"border_normal":"959dcb"}
+"border_focus": "eb5ddc",
+"border_normal":"6977cb"}
 
 layouts = [
     #layout.Columns(border_focus_stack='#d75f5f'),
@@ -189,15 +189,15 @@ screens = [
                     fontsize=18,
                     highlight_method="block",
                     rounded=True,
-                    padding_x=4,
-                    padding_y=1,
+                    padding_x=5,
+                    padding_y=2,
                     active="#ffffff",
                     inactive="#585858",
                     this_current_screen_border="319fe7",
-                    urgent_border="c04a55",
+                    urgent_border="E73144",
                     disable_drag=True,
-                    margin_x=5,
-                    #spacing=10
+                    #margin_x=5,
+                    spacing=6
                 ),
                 widget.Sep(
                     linewidth=0,
@@ -268,8 +268,8 @@ screens = [
                     charge_char="",
                     full_char="",
                     discharge_char="",
-                    low_foreground="fd971f",
-                    low_percentage=0.30,
+                    low_foreground="E87631",
+                    low_percentage=0.25,
                     
                     format="    {char}  {percent:2.0%}"
 
@@ -292,7 +292,7 @@ screens = [
                 )
             ],
             30,
-            background = "#20232a",
+            background = "#1c1c1d",
             opacity = 1,
             #margin = [5,8,-3,8]
         ),
