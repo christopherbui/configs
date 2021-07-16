@@ -153,8 +153,8 @@ for i in groups:
 
 layout_theme = {"border_width":3,
 "margin":8,
-"border_focus": "eb5ddc",
-"border_normal":"6977cb"}
+"border_focus": "eb6fde",
+"border_normal":"848fd6"}
 
 layouts = [
     #layout.Columns(border_focus_stack='#d75f5f'),
@@ -292,7 +292,7 @@ screens = [
                 )
             ],
             30,
-            background = "#1c1c1d",
+            background = "#151515",
             opacity = 1,
             #margin = [5,8,-3,8]
         ),
