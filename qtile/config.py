@@ -268,7 +268,7 @@ screens = [
                     charge_char="",
                     full_char="",
                     discharge_char="",
-                    low_foreground="E87631",
+                    low_foreground="AFE70B",
                     low_percentage=0.25,
                     
                     format="    {char}  {percent:2.0%}"
