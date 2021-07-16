@@ -106,8 +106,8 @@ export PF_INFO="ascii title os kernel pkgs memory"
 
 
 
-neofetch
-#pfetch
+#neofetch
+pfetch
 
 
 eval "$(pyenv init -)"
