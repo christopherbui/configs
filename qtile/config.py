@@ -46,7 +46,7 @@ def autostart():
 
 
 mod = "mod1"
-terminal = "alacritty"
+terminal = "kitty"
 browser = "firefox"
 file_manager = "nautilus"
 
@@ -97,6 +97,9 @@ keys = [
 
     # Discord
     Key([mod], "d", lazy.spawn("discord")),
+
+    # Music
+    Key([mod], "m", lazy.spawn("apple-music-for-linux")),
 
 
     # Switch between windows
@@ -153,8 +156,8 @@ for i in groups:
 
 layout_theme = {"border_width":3,
 "margin":8,
-"border_focus": "eb6fde",
-"border_normal":"848fd6"}
+"border_focus": "f8ab11",
+"border_normal":"11a8f8"}
 
 layouts = [
     #layout.Columns(border_focus_stack='#d75f5f'),
@@ -187,17 +190,19 @@ screens = [
                 widget.GroupBox(
                     font="SF Pro Display",
                     fontsize=18,
-                    highlight_method="block",
-                    rounded=True,
+                    highlight_method="line",
+                    highlight_color=["1c1d1d"],
+                    rounded=False,
                     padding_x=5,
-                    padding_y=2,
+                    #padding_y=2,
                     active="#ffffff",
-                    inactive="#585858",
-                    this_current_screen_border="319fe7",
-                    urgent_border="E73144",
+                    inactive="#6b6b6b",
+                    this_current_screen_border="f8ab11",
+                    urgent_border="f81118",
                     disable_drag=True,
                     #margin_x=5,
                     spacing=6
+                    #hide_unused=True
                 ),
                 widget.Sep(
                     linewidth=0,
@@ -206,30 +211,35 @@ screens = [
                 widget.Prompt(
                     font="SF Pro Display",
                     fontsize=18,
-                    foreground="fd971f"
+                    foreground="f8aa0e"
                 ),
                 #widget.WindowName(
                 #    font="SF Pro Display",
                 #    fontsize=18,
-                #    format="    [ {name} ]",
+                #    format="  [ {name} ]",
                 #    #max_chars=50,
                 #    foreground="ffffff",
-                #    background="81a1c1"
+                #    background="2a84d2"
                 #),
                 widget.Spacer(),
+                widget.Sep(
+                    linewidth=0,
+                    padding=5
+                ),
                 widget.Systray(
                 ),
                 widget.TextBox(
                     text = "│",
-                    fontsize=14,
+                    font="SF Pro Display",
+                    fontsize=18,
                     padding=5,
                     foreground="ffffff"
                 ),
                 widget.TextBox(
-                    text="",
+                    text=" ",
                     font="SF Pro Display",
                     fontsize=18,
-                    foreground="c04a55"
+                    foreground="f81118"
                 ),
                 widget.CPU(
                     font="SF Pro Display",
@@ -241,7 +251,7 @@ screens = [
                     text="    ",
                     font="SF Pro Display",
                     fontsize=18,
-                    foreground="84be53"
+                    foreground="8BF811"
                 ),
                 widget.Memory(
                     font="SF Pro Display",
@@ -250,10 +260,10 @@ screens = [
                     format="{MemUsed: } /{MemTotal: } MB"
                 ),
                 widget.TextBox(
-                    text="    ",
+                    text="     ",
                     font="SF Pro Display",
                     fontsize=18,
-                    foreground="5fb8d1"
+                    foreground="11a8f8"
                 ),
                 widget.PulseVolume(
                     font="SF Pro Display",
@@ -266,24 +276,22 @@ screens = [
                     foreground="ffffff",
                     unknown_char="",
                     charge_char="",
-                    full_char="",
-                    discharge_char="",
-                    low_foreground="AFE70B",
+                    discharge_char="",
+                    low_foreground="F811A8",
                     low_percentage=0.25,
-                    
                     format="    {char}  {percent:2.0%}"
-
                 ),
                 widget.TextBox(
                     text="     ",
                     font="SF Pro Display",
                     fontsize=18,
-                    foreground="cd4eb6"
+                    foreground="f8ab11"
                 ),
                 widget.Clock(
                     font="SF Pro Display",
                     fontsize=18,
-                    format="%a  %m/%d/%Y   %H : %M : %S",
+                    #format="%a  %m/%d/%Y   %H : %M : %S",
+                    format="%a  %b  %d   %H : %M : %S",
                     foreground="ffffff"
                 ),
                 widget.Sep(
@@ -292,11 +300,13 @@ screens = [
                 )
             ],
             30,
-            background = "#151515",
+            background = "#1c1d1d",
             opacity = 1,
             #margin = [5,8,-3,8]
         ),
     ),
+    # gradient: 3E9726 to 2EC5EF
+    # yellow: f8aa0e
 ]
 
 # Drag floating layouts.
