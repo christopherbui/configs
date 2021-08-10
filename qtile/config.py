@@ -156,7 +156,7 @@ for i in groups:
 
 layout_theme = {"border_width":3,
 "margin":8,
-"border_focus": "f8ab11",
+"border_focus": "F811A8",
 "border_normal":"11a8f8"}
 
 layouts = [
@@ -190,14 +190,14 @@ screens = [
                 widget.GroupBox(
                     font="SF Pro Display",
                     fontsize=18,
-                    highlight_method="line",
+                    highlight_method="border",
                     highlight_color=["1c1d1d"],
                     rounded=False,
                     padding_x=5,
-                    #padding_y=2,
+                    #padding_y=4,
                     active="#ffffff",
                     inactive="#6b6b6b",
-                    this_current_screen_border="f8ab11",
+                    this_current_screen_border="F811A8",
                     urgent_border="f81118",
                     disable_drag=True,
                     #margin_x=5,
@@ -211,64 +211,22 @@ screens = [
                 widget.Prompt(
                     font="SF Pro Display",
                     fontsize=18,
-                    foreground="f8aa0e"
+                    foreground="11a8f8"
                 ),
-                #widget.WindowName(
-                #    font="SF Pro Display",
-                #    fontsize=18,
-                #    format="  [ {name} ]",
-                #    #max_chars=50,
-                #    foreground="ffffff",
-                #    background="2a84d2"
-                #),
-                widget.Spacer(),
+                widget.WindowName(
+                    font="SF Pro Display",
+                    fontsize=18,
+                    format="  [ {name} ]",
+                    #max_chars=50,
+                    foreground="ffffff",
+                    background="1c1d1d"
+                ),
+                #widget.Spacer(),
                 widget.Sep(
                     linewidth=0,
                     padding=5
                 ),
                 widget.Systray(
-                ),
-                widget.TextBox(
-                    text = "│",
-                    font="SF Pro Display",
-                    fontsize=18,
-                    padding=5,
-                    foreground="ffffff"
-                ),
-                widget.TextBox(
-                    text=" ",
-                    font="SF Pro Display",
-                    fontsize=18,
-                    foreground="f81118"
-                ),
-                widget.CPU(
-                    font="SF Pro Display",
-                    fontsize=18,
-                    foreground="ffffff",
-                    format="CPU {load_percent}%"
-                ),
-                widget.TextBox(
-                    text="    ",
-                    font="SF Pro Display",
-                    fontsize=18,
-                    foreground="8BF811"
-                ),
-                widget.Memory(
-                    font="SF Pro Display",
-                    fontsize=18,
-                    foreground="ffffff",
-                    format="{MemUsed: } /{MemTotal: } MB"
-                ),
-                widget.TextBox(
-                    text="     ",
-                    font="SF Pro Display",
-                    fontsize=18,
-                    foreground="11a8f8"
-                ),
-                widget.PulseVolume(
-                    font="SF Pro Display",
-                    fontsize=18,
-                    foreground="ffffff"
                 ),
                 widget.Battery(
                     font="SF Pro Display",
@@ -282,10 +240,63 @@ screens = [
                     format="    {char}  {percent:2.0%}"
                 ),
                 widget.TextBox(
-                    text="     ",
+                    text="│",
                     font="SF Pro Display",
                     fontsize=18,
-                    foreground="f8ab11"
+                    padding=5,
+                    foreground="11a8f8"
+                ),
+                widget.OpenWeather(
+                    zip=21211,
+                    font="SF Pro Display",
+                    fontsize=18,
+                    format="{location_city}  {main_temp} °{units_temperature}",
+                    metric=False
+                ),
+                widget.TextBox(
+                    text="│",
+                    font="SF Pro Display",
+                    fontsize=18,
+                    padding=5,
+                    foreground="11a8f8"
+                ),
+                widget.CPU(
+                    font="SF Pro Display",
+                    fontsize=18,
+                    foreground="ffffff",
+                    format="CPU {load_percent}%"
+                ),
+                widget.TextBox(
+                    text="│",
+                    font="SF Pro Display",
+                    fontsize=18,
+                    padding=5,
+                    foreground="11a8f8"
+                ),
+                widget.Memory(
+                    font="SF Pro Display",
+                    fontsize=18,
+                    foreground="ffffff",
+                    format="Mem {MemUsed: } /{MemTotal: }"
+                ),
+                widget.TextBox(
+                    text="│",
+                    font="SF Pro Display",
+                    fontsize=18,
+                    padding=5,
+                    foreground="11a8f8"
+                ),
+                widget.PulseVolume(
+                    font="SF Pro Display",
+                    fontsize=18,
+                    foreground="ffffff"
+                ),
+                widget.TextBox(
+                    text="│",
+                    font="SF Pro Display",
+                    fontsize=18,
+                    padding=5,
+                    foreground="11a8f8"
                 ),
                 widget.Clock(
                     font="SF Pro Display",
