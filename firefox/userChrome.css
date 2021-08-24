@@ -6,3 +6,7 @@
 	--tab-min-height: 40px !important;
 }
 #TabsToolbar {height: var(--tab-min-height) !important;}
+
+.tab-line[selected="true"] {
+  opacity: 0 !important;
+}
