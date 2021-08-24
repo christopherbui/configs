@@ -1,9 +1,9 @@
 :root {
 	--tab-toolbar-navbar-overlap: 0px !important;
-	--tab-min-height: 36px !important;
+	--tab-min-height: 37px !important;
 }
 :root #tabbrowser-tabs {
-	--tab-min-height: 36px !important;
+	--tab-min-height: 37px !important;
 }
 #TabsToolbar {height: var(--tab-min-height) !important;}
 
