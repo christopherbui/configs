@@ -187,6 +187,15 @@ screens = [
     Screen(
         top=bar.Bar(
             [
+                widget.Image(
+                    filename="~/Pictures/logo.png",
+                    margin_x=12,
+                    margin_y=6
+                ),
+                widget.Sep(
+                    linewidth=0,
+                    padding=2
+                ),
                 widget.GroupBox(
                     font="SF Pro Display",
                     fontsize=18,
@@ -201,7 +210,7 @@ screens = [
                     urgent_border="e23838",
                     disable_drag=True,
                     #margin_x=5,
-                    spacing=6
+                    spacing=4
                     #hide_unused=True
                 ),
                 widget.Sep(
@@ -211,15 +220,15 @@ screens = [
                 widget.Prompt(
                     font="SF Pro Display",
                     fontsize=18,
-                    foreground="ffb900"
+                    foreground="009cdf"
                 ),
                 widget.WindowName(
                     font="SF Pro Display",
                     fontsize=18,
-                    format="  [ {name} ]",
-                    max_chars=70,
-                    foreground="ffffff",
-                    background="191919"
+                    format="  {name}",
+                    #max_chars=70,
+                    foreground="000000",
+                    background="c7dae4"
                 ),
                 #widget.Spacer(),
                 widget.Sep(
@@ -236,11 +245,24 @@ screens = [
                 #    foreground="11a8f8"
                 #),
                 widget.TextBox(
+                    text="       ",
+                    font="SF Pro Display",
+                    fontsize=18,
+                    foreground="5ebd3e"
+                ),
+                widget.OpenWeather(
+                    font="SF Pro Display",
+                    fontsize=18,
+                    format="{main_temp} °{units_temperature}   {weather_details}",
+                    zip=21211,
+                    metric=False
+                ),
+                widget.TextBox(
                     text="       ",
                     font="SF Pro Display",
                     fontsize=18,
                     padding=5,
-                    foreground="5ebd3e"
+                    foreground="973999"
                 ),
                 widget.CPU(
                     font="SF Pro Display",
@@ -249,7 +271,7 @@ screens = [
                     format="CPU {load_percent}%"
                 ),
                 widget.TextBox(
-                    text="       ",
+                    text="       ",
                     font="SF Pro Display",
                     fontsize=18,
                     padding=5,
@@ -323,7 +345,7 @@ screens = [
             ],
             30,
             background = "#191919",
-            opacity = 1,
+            opacity = 0.87,
             #margin = [5,8,-3,8]
         ),
     ),
