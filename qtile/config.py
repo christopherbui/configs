@@ -213,7 +213,7 @@ screens = [
                     padding=10
                 ),
                 widget.Prompt(
-                    font="SF Pro Display",
+                    font="Fira Code Nerd Font",
                     fontsize=18,
                     foreground="9ece6a"
                 ),
