@@ -215,7 +215,7 @@ screens = [
                 widget.Prompt(
                     font="Fira Code Nerd Font",
                     fontsize=18,
-                    foreground="4ec260"
+                    foreground="34a853"
                 ),
                 #widget.WindowName(
                 #    font="SF Pro Display",
