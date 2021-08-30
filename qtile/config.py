@@ -246,7 +246,7 @@ screens = [
                 widget.CPU(
                     font="Fira Code Nerd Font",
                     fontsize=18,
-                    foreground="bb5cff",
+                    foreground="a142f4",
                     format="CPU {load_percent}%",
                     padding=10
                 ),
@@ -259,7 +259,7 @@ screens = [
                 widget.Memory(
                     font="Fira Code Nerd Font",
                     fontsize=18,
-                    foreground="4ec260",
+                    foreground="34a853",
                     format="Mem {MemUsed:}/{MemTotal:}",
                     padding=10
                 ),
@@ -278,13 +278,13 @@ screens = [
                     text="Vol",
                     font="Fira Code Nerd Font",
                     fontsize=18,
-                    foreground="5c9fff",
+                    foreground="4285f4",
                     padding=5
                 ),
                 widget.PulseVolume(
                     font="Fira Code Nerd Font",
                     fontsize=18,
-                    foreground="5c9fff",
+                    foreground="4285f4",
                     #padding=10
                 ),
                 widget.Sep(
@@ -319,7 +319,7 @@ screens = [
                     font="Fira Code Nerd Font",
                     fontsize=18,
                     format="%a %b %d",
-                    foreground="ffd61f",
+                    foreground="fbbc05",
                     padding=10
                 ),
                 widget.Sep(
@@ -333,7 +333,7 @@ screens = [
                     fontsize=18,
                     #format="%a  %m/%d/%Y   %H : %M : %S",
                     format="%H:%M:%S",
-                    foreground="ff5d4f",
+                    foreground="ea4335",
                     padding=10
                 ),
                 #widget.Image(
@@ -343,7 +343,7 @@ screens = [
                 #)
             ],
             30,
-            background = "#19191a",
+            background = "#1e253a",
             opacity = 1,
             #margin = [5,8,-3,8]
         ),
