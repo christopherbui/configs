@@ -156,8 +156,8 @@ for i in groups:
 
 layout_theme = {"border_width":3,
 "margin":8,
-"border_focus": "7dcfff",
-"border_normal":"c678dd"}
+"border_focus": "5c9fff",
+"border_normal":"bb5cff"}
 
 layouts = [
     #layout.Columns(border_focus_stack='#d75f5f'),
@@ -202,7 +202,7 @@ screens = [
                     active="#ffffff",
                     inactive="#6b6b6b",
                     this_current_screen_border="414868",
-                    urgent_border="f7768e",
+                    urgent_border="ea4335",
                     disable_drag=True,
                     #margin_x=5,
                     spacing=6
@@ -215,7 +215,7 @@ screens = [
                 widget.Prompt(
                     font="Fira Code Nerd Font",
                     fontsize=18,
-                    foreground="9ece6a"
+                    foreground="4ec260"
                 ),
                 #widget.WindowName(
                 #    font="SF Pro Display",
@@ -246,7 +246,7 @@ screens = [
                 widget.CPU(
                     font="Fira Code Nerd Font",
                     fontsize=18,
-                    foreground="bb9af7",
+                    foreground="bb5cff",
                     format="CPU {load_percent}%",
                     padding=10
                 ),
@@ -259,7 +259,7 @@ screens = [
                 widget.Memory(
                     font="Fira Code Nerd Font",
                     fontsize=18,
-                    foreground="9ece6a",
+                    foreground="4ec260",
                     format="Mem {MemUsed:}/{MemTotal:}",
                     padding=10
                 ),
@@ -278,13 +278,13 @@ screens = [
                     text="Vol",
                     font="Fira Code Nerd Font",
                     fontsize=18,
-                    foreground="7aa2f7",
+                    foreground="5c9fff",
                     padding=5
                 ),
                 widget.PulseVolume(
                     font="Fira Code Nerd Font",
                     fontsize=18,
-                    foreground="7aa2f7",
+                    foreground="5c9fff",
                     #padding=10
                 ),
                 widget.Sep(
@@ -300,7 +300,7 @@ screens = [
                 widget.Battery(
                     font="Fira Code Nerd Font",
                     fontsize=18,
-                    foreground="e0af68",
+                    foreground="ffffff",
                     unknown_char="",
                     charge_char="",
                     discharge_char="",
@@ -319,7 +319,7 @@ screens = [
                     font="Fira Code Nerd Font",
                     fontsize=18,
                     format="%a %b %d",
-                    foreground="f7768e",
+                    foreground="ffd61f",
                     padding=10
                 ),
                 widget.Sep(
@@ -333,7 +333,7 @@ screens = [
                     fontsize=18,
                     #format="%a  %m/%d/%Y   %H : %M : %S",
                     format="%H:%M:%S",
-                    foreground="c0caf5",
+                    foreground="ff5d4f",
                     padding=10
                 ),
                 #widget.Image(
@@ -343,7 +343,7 @@ screens = [
                 #)
             ],
             30,
-            background = "#1a1b26",
+            background = "#19191a",
             opacity = 1,
             #margin = [5,8,-3,8]
         ),
