@@ -103,12 +103,17 @@ source $ZSH/oh-my-zsh.sh
 
 # VARIABLES
 export PF_INFO="ascii title os kernel pkgs memory"
-
+export PF_COL1=2
+export PF_COL2=1
 
 
 #neofetch
 pfetch
 
+
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init --path)"
 
 eval "$(pyenv init -)"
 
