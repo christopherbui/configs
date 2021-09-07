@@ -156,8 +156,8 @@ for i in groups:
 
 layout_theme = {"border_width":3,
 "margin":8,
-"border_focus": "5c9fff",
-"border_normal":"bb5cff"}
+"border_focus": "4c9ad4",
+"border_normal":"a57fc4"}
 
 layouts = [
     #layout.Columns(border_focus_stack='#d75f5f'),
@@ -201,7 +201,7 @@ screens = [
                     padding_y=4,
                     active="#ffffff",
                     inactive="#6b6b6b",
-                    this_current_screen_border="414868",
+                    this_current_screen_border="464d54",
                     urgent_border="ea4335",
                     disable_drag=True,
                     #margin_x=5,
@@ -246,7 +246,7 @@ screens = [
                 widget.CPU(
                     font="Fira Code Nerd Font",
                     fontsize=18,
-                    foreground="a142f4",
+                    foreground="a57fc4",
                     format="CPU {load_percent}%",
                     padding=10
                 ),
@@ -259,7 +259,7 @@ screens = [
                 widget.Memory(
                     font="Fira Code Nerd Font",
                     fontsize=18,
-                    foreground="34a853",
+                    foreground="7bb75b",
                     format="Mem {MemUsed:}/{MemTotal:}",
                     padding=10
                 ),
@@ -278,13 +278,13 @@ screens = [
                     text="Vol",
                     font="Fira Code Nerd Font",
                     fontsize=18,
-                    foreground="4285f4",
+                    foreground="389aad",
                     padding=5
                 ),
                 widget.PulseVolume(
                     font="Fira Code Nerd Font",
                     fontsize=18,
-                    foreground="4285f4",
+                    foreground="389aad",
                     #padding=10
                 ),
                 widget.Sep(
@@ -319,7 +319,7 @@ screens = [
                     font="Fira Code Nerd Font",
                     fontsize=18,
                     format="%a %b %d",
-                    foreground="fbbc05",
+                    foreground="e9b32a",
                     padding=10
                 ),
                 widget.Sep(
@@ -333,7 +333,7 @@ screens = [
                     fontsize=18,
                     #format="%a  %m/%d/%Y   %H : %M : %S",
                     format="%H:%M:%S",
-                    foreground="ea4335",
+                    foreground="cf3f61",
                     padding=10
                 ),
                 #widget.Image(
@@ -343,7 +343,7 @@ screens = [
                 #)
             ],
             30,
-            background = "#1e253a",
+            background = "#212224",
             opacity = 1,
             #margin = [5,8,-3,8]
         ),
