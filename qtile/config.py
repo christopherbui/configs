@@ -278,13 +278,13 @@ screens = [
                     text="Vol",
                     font="Fira Code Nerd Font",
                     fontsize=18,
-                    foreground="389aad",
+                    foreground="4c9ad4",
                     padding=5
                 ),
                 widget.PulseVolume(
                     font="Fira Code Nerd Font",
                     fontsize=18,
-                    foreground="389aad",
+                    foreground="4c9ad4",
                     #padding=10
                 ),
                 widget.Sep(
