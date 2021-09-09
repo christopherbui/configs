@@ -246,7 +246,7 @@ screens = [
                 widget.CPU(
                     font="Fira Code Nerd Font",
                     fontsize=18,
-                    foreground="a57fc4",
+                    foreground="cf3f61",
                     format="CPU {load_percent}%",
                     padding=10
                 ),
@@ -319,7 +319,7 @@ screens = [
                     font="Fira Code Nerd Font",
                     fontsize=18,
                     format="%a %b %d",
-                    foreground="e9b32a",
+                    foreground="a57fc4",
                     padding=10
                 ),
                 widget.Sep(
@@ -333,7 +333,7 @@ screens = [
                     fontsize=18,
                     #format="%a  %m/%d/%Y   %H : %M : %S",
                     format="%H:%M:%S",
-                    foreground="cf3f61",
+                    foreground="e9b32a",
                     padding=10
                 ),
                 #widget.Image(
@@ -343,9 +343,9 @@ screens = [
                 #)
             ],
             30,
-            background = "#212224",
+            background = "#1f2123",
             opacity = 1,
-            #margin = [5,8,-3,8]
+            #margin = [5,8,-3,8], 202427
         ),
     ),
     # gradient: 3E9726 to 2EC5EF

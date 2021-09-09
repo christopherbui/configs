@@ -2,6 +2,6 @@
 
 nitrogen --restore &
 
-picom &
+#picom &
 
 brightnessctl set 1
