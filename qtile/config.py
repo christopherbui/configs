@@ -47,7 +47,7 @@ def autostart():
 
 mod = "mod1"
 terminal = "kitty"
-browser = "firefox"
+browser = "librewolf"
 file_manager = "nautilus"
 
 
@@ -77,7 +77,7 @@ keys = [
     Key([], "XF86MonBrightnessDown", lazy.spawn("brightnessctl set 1%-")),
 
     # Nightlight
-    Key([mod], "n", lazy.spawn("redshift -P -O 5000")),
+    Key([mod], "n", lazy.spawn("redshift -P -O 4900")),
     Key([mod, "shift"], "n", lazy.spawn("redshift -x")),
 
     # Browser
@@ -137,7 +137,7 @@ keys = [
     Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
 ]
 
-groups = [Group(i) for i in "12345"]
+groups = [Group(i) for i in "1234567"]
 
 for i in groups:
     keys.extend([
@@ -156,8 +156,8 @@ for i in groups:
 
 layout_theme = {"border_width":3,
 "margin":8,
-"border_focus": "4c9ad4",
-"border_normal":"a57fc4"}
+"border_focus": "4285F4",
+"border_normal":"e63fcc"}
 
 layouts = [
     #layout.Columns(border_focus_stack='#d75f5f'),
@@ -201,12 +201,13 @@ screens = [
                     padding_y=4,
                     active="#ffffff",
                     inactive="#7b7b7b",
-                    this_current_screen_border="4c9ad4",
-                    urgent_border="cf3f61",
+                    this_current_screen_border="4285f4",
+                    urgent_border="EA4335",
                     disable_drag=True,
                     #margin_x=5,
-                    spacing=6
+                    spacing=2,
                     #hide_unused=True
+                    use_mouse_wheel=False
                 ),
                 widget.Sep(
                     linewidth=0,
@@ -215,7 +216,7 @@ screens = [
                 widget.Prompt(
                     font="Fira Code Nerd Font",
                     fontsize=18,
-                    foreground="7bb75b"
+                    foreground="34a853"
                 ),
                 #widget.WindowName(
                 #    font="SF Pro Display",
@@ -243,23 +244,24 @@ screens = [
                     linewidth=0,
                     padding=14
                 ),
-                widget.CPU(
-                    font="Fira Code Nerd Font",
-                    fontsize=18,
-                    foreground="cf3f61",
-                    format="CPU {load_percent}%",
-                    padding=10
-                ),
-                widget.Sep(
-                    linewidth=1,
-                    size_percent=65,
-                    padding=14,
-                    foreground="c0caf5"
-                ),
+                #widget.CPU(
+                #    font="Fira Code Nerd Font",
+                #    fontsize=18,
+                #    foreground="cf3f61",
+                #    format="CPU {load_percent}%",
+                #    update_interval=5,
+                #    padding=10
+                #),
+                #widget.Sep(
+                #    linewidth=1,
+                #    size_percent=65,
+                #    padding=14,
+                #    foreground="c0caf5"
+                #),
                 widget.Memory(
                     font="Fira Code Nerd Font",
                     fontsize=18,
-                    foreground="7bb75b",
+                    foreground="34a853",
                     format="Mem {MemUsed:}/{MemTotal:}",
                     padding=10
                 ),
@@ -278,13 +280,13 @@ screens = [
                     text="Vol",
                     font="Fira Code Nerd Font",
                     fontsize=18,
-                    foreground="4c9ad4",
+                    foreground="4285f4",
                     padding=5
                 ),
                 widget.PulseVolume(
                     font="Fira Code Nerd Font",
                     fontsize=18,
-                    foreground="4c9ad4",
+                    foreground="4285f4",
                     #padding=10
                 ),
                 widget.Sep(
@@ -304,7 +306,7 @@ screens = [
                     unknown_char="",
                     charge_char="",
                     discharge_char="",
-                    low_foreground="F811A8",
+                    low_foreground="EA4335",
                     low_percentage=0.25,
                     format="{char}  {percent:2.0%}",
                     padding=10
@@ -319,7 +321,7 @@ screens = [
                     font="Fira Code Nerd Font",
                     fontsize=18,
                     format="%a %b %d",
-                    foreground="a57fc4",
+                    foreground="EA4335",
                     padding=10
                 ),
                 widget.Sep(
@@ -333,7 +335,7 @@ screens = [
                     fontsize=18,
                     #format="%a  %m/%d/%Y   %H : %M : %S",
                     format="%H:%M:%S",
-                    foreground="e9b32a",
+                    foreground="fbbc05",
                     padding=10
                 ),
                 #widget.Image(
