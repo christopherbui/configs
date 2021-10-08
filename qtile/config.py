@@ -341,7 +341,7 @@ screens = [
             background = "#353945",
             opacity = 1,
             #margin = [5,8,-3,8], 202427
-        ),
+        )
     ),
     # gradient: 3E9726 to 2EC5EF
     # yellow: f8aa0e
