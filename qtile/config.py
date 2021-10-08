@@ -218,7 +218,7 @@ screens = [
                     padding=10
                 ),
                 widget.CurrentLayoutIcon(
-                    scale=0.80,
+                    scale=0.80
                 ),
                 widget.Prompt(
                     font="Fira Code Nerd Font",
