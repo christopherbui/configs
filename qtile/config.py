@@ -46,14 +46,16 @@ def autostart():
 
 
 mod = "mod1"
-terminal = "kitty"
+terminal = "alacritty"
+app_launcher = "rofi -combi-modi drun -font 'Fira Code Nerd Font 20' -show drun -icon-theme 'Papirus' -show-icons -width 42"
 browser = "librewolf"
-file_manager = "nautilus"
+file_manager = "thunar"
+music = "spotify --force-device-scale-factor=1.2"
 
 
 keys = [
     # Rofi
-    Key([mod], "space", lazy.spawn("rofi -combi-modi drun -font 'Fira Code Nerd Font 20' -show drun -icon-theme 'Papirus' -show-icons")),
+    Key([mod], "space", lazy.spawn(app_launcher)),
 
     # Lock Screen
     Key([mod],"l", lazy.spawn("betterlockscreen -l")),
@@ -99,7 +101,7 @@ keys = [
     Key([mod], "d", lazy.spawn("discord")),
 
     # Music
-    Key([mod], "m", lazy.spawn("apple-music-for-linux")),
+    Key([mod], "m", lazy.spawn(music)),
 
 
     # Switch between windows
@@ -156,8 +158,8 @@ for i in groups:
 
 layout_theme = {"border_width":3,
 "margin":8,
-"border_focus": "4285F4",
-"border_normal":"e63fcc"}
+"border_focus": "24C1E0",
+"border_normal":"000000"}
 
 layouts = [
     #layout.Columns(border_focus_stack='#d75f5f'),
@@ -195,14 +197,14 @@ screens = [
                     font="Fira Code Nerd Font",
                     fontsize=18,
                     highlight_method="block",
-                    highlight_color=["1c2129"],
+                    highlight_color=["202124"],
                     rounded=False,
                     padding_x=5,
                     padding_y=4,
                     active="#ffffff",
                     inactive="#7b7b7b",
-                    this_current_screen_border="4285f4",
-                    urgent_border="EA4335",
+                    this_current_screen_border="5294E2",
+                    urgent_border="f03829",
                     disable_drag=True,
                     #margin_x=5,
                     spacing=2,
@@ -242,7 +244,7 @@ screens = [
                 #),
                 widget.Sep(
                     linewidth=0,
-                    padding=14
+                    padding=22
                 ),
                 #widget.CPU(
                 #    font="Fira Code Nerd Font",
@@ -258,47 +260,19 @@ screens = [
                 #    padding=14,
                 #    foreground="c0caf5"
                 #),
-                widget.Memory(
-                    font="Fira Code Nerd Font",
-                    fontsize=18,
-                    foreground="34a853",
-                    format="Mem {MemUsed:}/{MemTotal:}",
-                    padding=10
-                ),
-                widget.Sep(
-                    linewidth=1,
-                    size_percent=65,
-                    padding=14,
-                    foreground="c0caf5"
-                ),
-                widget.Sep(
-                    linewidth=0,
-                    padding=5,
-                    foreground="c0caf5"
-                ),
-                widget.TextBox(
-                    text="Vol",
-                    font="Fira Code Nerd Font",
-                    fontsize=18,
-                    foreground="4285f4",
-                    padding=5
-                ),
-                widget.PulseVolume(
-                    font="Fira Code Nerd Font",
-                    fontsize=18,
-                    foreground="4285f4",
-                    #padding=10
-                ),
-                widget.Sep(
-                    linewidth=0,
-                    padding=10,
-                ),
-                widget.Sep(
-                    linewidth=1,
-                    size_percent=65,
-                    padding=14,
-                    foreground="c0caf5"
-                ),
+                #widget.Memory(
+                #    font="Fira Code Nerd Font",
+                #    fontsize=18,
+                #    foreground="22b50f",
+                #    format="Mem {MemUsed:}/{MemTotal:}",
+                #    padding=10
+                #),
+                #widget.Sep(
+                #    linewidth=1,
+                #    size_percent=65,
+                #    padding=14,
+                #    foreground="c0caf5"
+                #),
                 widget.Battery(
                     font="Fira Code Nerd Font",
                     fontsize=18,
@@ -309,43 +283,57 @@ screens = [
                     low_foreground="EA4335",
                     low_percentage=0.25,
                     format="{char}  {percent:2.0%}",
+                    padding=6
+                ),
+                widget.Sep(
+                    linewidth=3,
+                    size_percent=65,
+                    padding=22,
+                    foreground="5294E2"
+                ),
+                widget.TextBox(
+                    text="Vol",
+                    font="Fira Code Nerd Font",
+                    fontsize=18,
+                    foreground="ffffff",
+                    padding=2
+                ),
+                widget.PulseVolume(
+                    font="Fira Code Nerd Font",
+                    fontsize=18,
+                    foreground="ffffff",
                     padding=10
                 ),
                 widget.Sep(
-                    linewidth=1,
+                    linewidth=3,
                     size_percent=65,
                     padding=14,
-                    foreground="c0caf5"
+                    foreground="5294E2"
                 ),
                 widget.Clock(
                     font="Fira Code Nerd Font",
                     fontsize=18,
                     format="%a %b %d",
-                    foreground="EA4335",
+                    foreground="ffffff",
                     padding=10
                 ),
                 widget.Sep(
-                    linewidth=1,
+                    linewidth=3,
                     size_percent=65,
                     padding=14,
-                    foreground="c0caf5"
+                    foreground="5294E2"
                 ),
                 widget.Clock(
                     font="Fira Code Nerd Font",
                     fontsize=18,
                     #format="%a  %m/%d/%Y   %H : %M : %S",
                     format="%H:%M:%S",
-                    foreground="fbbc05",
+                    foreground="ffffff",
                     padding=10
                 ),
-                #widget.Image(
-                #   filename="~/Pictures/white_logo.png",
-                #    margin_x=16,
-                #    margin_y=6
-                #)
             ],
             30,
-            background = "#1f2123",
+            background = "#353945",
             opacity = 1,
             #margin = [5,8,-3,8], 202427
         ),
