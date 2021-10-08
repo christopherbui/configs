@@ -47,7 +47,7 @@ def autostart():
 
 mod = "mod1"
 terminal = "alacritty"
-app_launcher = "rofi -combi-modi drun -font 'Fira Code Nerd Font 20' -show drun -icon-theme 'Papirus' -show-icons -width 42"
+app_launcher = "rofi -combi-modi drun -font 'Fira Code Nerd Font 20' -show drun -icon-theme 'Papirus' -show-icons -width 48"
 browser = "librewolf"
 file_manager = "thunar"
 music = "spotify --force-device-scale-factor=1.2"
@@ -175,6 +175,8 @@ layouts = [
     # layout.TreeTab(),
     # layout.VerticalTile(),
     # layout.Zoomy(),
+    #layout.Max(**layout_theme),
+    layout.Stack(**layout_theme, num_stacks=1),
     layout.Floating(**layout_theme),
 ]
 
@@ -215,10 +217,13 @@ screens = [
                     linewidth=0,
                     padding=10
                 ),
+                widget.CurrentLayoutIcon(
+                    scale=0.80,
+                ),
                 widget.Prompt(
                     font="Fira Code Nerd Font",
                     fontsize=18,
-                    foreground="34a853"
+                    foreground="22b50f"
                 ),
                 #widget.WindowName(
                 #    font="SF Pro Display",
