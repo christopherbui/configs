@@ -8,7 +8,7 @@ export ZSH="/home/alphard/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+ZSH_THEME="gentoo"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -102,12 +102,10 @@ source $ZSH/oh-my-zsh.sh
 
 
 # VARIABLES
-export PF_INFO="ascii title os kernel pkgs memory"
-export PF_COL1=2
-export PF_COL2=1
+export PF_INFO="ascii title os kernel pkgs de memory palette"
 
 
-#neofetch
+#neofetch --ascii_distro arch_small
 pfetch
 
 
@@ -122,4 +120,3 @@ eval "$(pyenv init -)"
 #fi
 
 alias ls="lsd"
-alias calendar="calcurse"

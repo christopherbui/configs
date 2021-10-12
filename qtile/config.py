@@ -119,11 +119,34 @@ keys = [
 
     # Grow windows. If current window is on the edge of screen and direction
     # will be to screen edge - window would shrink.
-    Key([mod, "control"], "h", lazy.layout.grow_left(), desc="Grow window to the left"),
-    Key([mod, "control"], "l", lazy.layout.grow_right(), desc="Grow window to the right"),
-    Key([mod, "control"], "j", lazy.layout.grow_down(), desc="Grow window down"),
-    Key([mod, "control"], "k", lazy.layout.grow_up(), desc="Grow window up"),
+    #Key([mod, "control"], "h", lazy.layout.grow_left(), desc="Grow window to the left"),
+    #Key([mod, "control"], "l", lazy.layout.grow_right(), desc="Grow window to the right"),
+    #Key([mod, "control"], "j", lazy.layout.grow_down(), desc="Grow window down"),
+    #Key([mod, "control"], "k", lazy.layout.grow_up(), desc="Grow window up"),
     #Key([mod], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
+
+    Key([mod, "control"], "h",
+        lazy.layout.grow_right(),
+        lazy.layout.grow(),
+        lazy.layout.increase_ratio(),
+        lazy.layout.delete(),
+        ),
+    Key([mod, "control"], "l",
+        lazy.layout.grow_left(),
+        lazy.layout.shrink(),
+        lazy.layout.decrease_ratio(),
+        lazy.layout.add(),
+        ),
+    Key([mod, "control"], "j",
+        lazy.layout.grow_up(),
+        lazy.layout.grow(),
+        lazy.layout.decrease_nmaster(),
+        ),
+    Key([mod, "control"], "k",
+        lazy.layout.grow_down(),
+        lazy.layout.shrink(),
+        lazy.layout.increase_nmaster(),
+        ),
 
 
     # Launch terminal
@@ -158,7 +181,7 @@ for i in groups:
 
 layout_theme = {"border_width":3,
 "margin":8,
-"border_focus": "24C1E0",
+"border_focus": "208FE9",
 "border_normal":"000000"}
 
 layouts = [
@@ -205,7 +228,7 @@ screens = [
                     padding_y=4,
                     active="#ffffff",
                     inactive="#7b7b7b",
-                    this_current_screen_border="5294E2",
+                    this_current_screen_border="208FE9",
                     urgent_border="f03829",
                     disable_drag=True,
                     #margin_x=5,
@@ -218,7 +241,7 @@ screens = [
                     padding=10
                 ),
                 widget.CurrentLayoutIcon(
-                    scale=0.80
+                    scale=0.80,
                 ),
                 widget.Prompt(
                     font="Fira Code Nerd Font",
@@ -294,7 +317,7 @@ screens = [
                     linewidth=3,
                     size_percent=65,
                     padding=22,
-                    foreground="5294E2"
+                    foreground="208FE9"
                 ),
                 widget.TextBox(
                     text="Vol",
@@ -313,7 +336,7 @@ screens = [
                     linewidth=3,
                     size_percent=65,
                     padding=14,
-                    foreground="5294E2"
+                    foreground="208FE9"
                 ),
                 widget.Clock(
                     font="Fira Code Nerd Font",
@@ -326,7 +349,7 @@ screens = [
                     linewidth=3,
                     size_percent=65,
                     padding=14,
-                    foreground="5294E2"
+                    foreground="208FE9"
                 ),
                 widget.Clock(
                     font="Fira Code Nerd Font",
@@ -338,7 +361,7 @@ screens = [
                 ),
             ],
             30,
-            background = "#353945",
+            background = "#191b1eE9",
             opacity = 1,
             #margin = [5,8,-3,8], 202427
         )

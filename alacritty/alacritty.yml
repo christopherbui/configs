@@ -181,7 +181,7 @@ font:
 colors:
   # Default colors
   primary:
-    background: '#292b31'
+    background: '#191b1e'
     foreground: '#ffffff'
 
     # Bright and dim foreground colors
@@ -342,7 +342,7 @@ colors:
 #
 # Window opacity as a floating point number from `0.0` to `1.0`.
 # The value `0.0` is completely transparent and `1.0` is opaque.
-background_opacity: 1
+background_opacity: 0.92
 
 #selection:
   # This string contains all characters that are used as separators for
@@ -370,7 +370,7 @@ cursor:
     #   - Off: Disable blinking by default
     #   - On: Enable blinking by default
     #   - Always: Force the cursor to always blink
-    blinking: On
+    blinking: Always
 
   # Vi mode cursor style
   #
