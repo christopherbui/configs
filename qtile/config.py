@@ -361,7 +361,7 @@ screens = [
                 ),
             ],
             30,
-            background = "#191b1eE9",
+            background = "#191b1eCC",
             opacity = 1,
             #margin = [5,8,-3,8], 202427
         )
