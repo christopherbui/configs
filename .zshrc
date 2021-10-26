@@ -8,7 +8,7 @@ export ZSH="/home/alphard/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="gentoo"
+ZSH_THEME="custom1"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -108,6 +108,8 @@ export PF_INFO="ascii title os kernel pkgs de memory palette"
 #neofetch --ascii_distro arch_small
 pfetch
 
+export LSD="$HOME/.cargo/bin"
+export PATH="$LSD:$PATH"
 
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
@@ -120,3 +122,6 @@ eval "$(pyenv init -)"
 #fi
 
 alias ls="lsd"
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

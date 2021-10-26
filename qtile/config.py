@@ -35,7 +35,7 @@ from libqtile.utils import guess_terminal
 # Autostart
 import os
 import subprocess
-from libqtile import hook
+from libqtile import hook, qtile
 
 
 @hook.subscribe.startup_once
@@ -47,13 +47,17 @@ def autostart():
 
 mod = "mod1"
 terminal = "alacritty"
-app_launcher = "rofi -combi-modi drun -font 'Fira Code Nerd Font 20' -show drun -icon-theme 'Papirus' -show-icons -width 48"
+#app_launcher = "rofi -combi-modi drun -font 'Fira Code Nerd Font 18' -show drun -icon-theme 'Papirus' -show-icons -width 48 -theme-str 'element-icon {size:2.8ch;}' -lines 10"
+app_launcher = "/home/alphard/.config/rofi/launchers/misc/launcher.sh"
 browser = "librewolf"
-file_manager = "thunar"
+file_manager = "nautilus"
 music = "spotify --force-device-scale-factor=1.2"
 
 
 keys = [
+    # Terminal
+    Key([mod], "Return", lazy.spawn(terminal)),
+
     # Rofi
     Key([mod], "space", lazy.spawn(app_launcher)),
 
@@ -64,7 +68,7 @@ keys = [
     Key([mod], "s", lazy.spawn("betterlockscreen -s")),
     
     # Shutdown
-    Key([mod, "shift"], "Delete", lazy.spawn("shutdown now")),
+    Key([mod, "shift"], "Delete", lazy.spawn("alacritty -e /home/alphard/.config/qtile/shutprompt.sh")),
 
     # Reboot
     Key([mod, "shift"], "r", lazy.spawn("reboot")),
@@ -77,16 +81,23 @@ keys = [
     # Brightness
     Key([], "XF86MonBrightnessUp", lazy.spawn("brightnessctl set 1%+")),
     Key([], "XF86MonBrightnessDown", lazy.spawn("brightnessctl set 1%-")),
+    Key(["control", "shift"], "XF86MonBrightnessDown", lazy.spawn("brightnessctl set 1")),
 
     # Nightlight
     Key([mod], "n", lazy.spawn("redshift -P -O 4900")),
     Key([mod, "shift"], "n", lazy.spawn("redshift -x")),
+
+    # Screenshot
+    Key([], "Print", lazy.spawn("gnome-screenshot")),
 
     # Browser
     Key([mod], "b", lazy.spawn(browser)),
 
     # File Manager
     Key([mod], "f", lazy.spawn(file_manager)),
+
+    # Text Editor
+    Key([mod], "g", lazy.spawn("gedit")),
 
     # VS Code
     Key([mod], "c", lazy.spawn("code")),
@@ -103,11 +114,9 @@ keys = [
     # Music
     Key([mod], "m", lazy.spawn(music)),
 
-
     # Switch between windows
     Key([mod], "Tab", lazy.layout.down(), desc="Move focus down"),
     Key([mod, "shift"], "Tab", lazy.layout.up(), desc="Move focus up"),
-
 
     # Move windows between left/right columns or move up/down in current stack.
     # Moving out of range in Columns layout will create new column.
@@ -115,7 +124,6 @@ keys = [
     Key([mod], "Right", lazy.layout.shuffle_right(), desc="Move window to the right"),
     Key([mod], "Down", lazy.layout.shuffle_down(), desc="Move window down"),
     Key([mod], "Up", lazy.layout.shuffle_up(), desc="Move window up"),
-
 
     # Grow windows. If current window is on the edge of screen and direction
     # will be to screen edge - window would shrink.
@@ -148,11 +156,6 @@ keys = [
         lazy.layout.increase_nmaster(),
         ),
 
-
-    # Launch terminal
-    Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
-
-
     # Toggle between different layouts as defined below
     Key([mod, "shift"], "l", lazy.next_layout(), desc="Toggle between layouts"),
     Key([mod], "w", lazy.window.kill(), desc="Kill focused window"),
@@ -180,25 +183,13 @@ for i in groups:
     ])
 
 layout_theme = {"border_width":3,
-"margin":8,
-"border_focus": "208FE9",
+"margin":10,
+"border_focus": "61afef",
 "border_normal":"000000"}
 
 layouts = [
-    #layout.Columns(border_focus_stack='#d75f5f'),
-    # layout.Max(),
-    # Try more layouts by unleashing below layouts.
-    # layout.Stack(num_stacks=2),
-    # layout.Bsp(),
-    # layout.Matrix(),
     layout.MonadTall(**layout_theme),
     layout.MonadWide(**layout_theme),
-    # layout.RatioTile(),
-    # layout.Tile(),
-    # layout.TreeTab(),
-    # layout.VerticalTile(),
-    # layout.Zoomy(),
-    #layout.Max(**layout_theme),
     layout.Stack(**layout_theme, num_stacks=1),
     layout.Floating(**layout_theme),
 ]
@@ -210,26 +201,37 @@ widget_defaults = dict(
 )
 extension_defaults = widget_defaults.copy()
 
+
+# colors
+background = "222222"
+foreground = "ffffff"
+
+black = "222222"
+red = "FF6188"
+green = "A9DC76"
+yellow = "FFD866"
+blue = "61afef"
+magenta = "AB9DF2"
+cyan = "78DCE8"
+white = "ffffff"
+
+
 screens = [
     Screen(
         top=bar.Bar(
             [
-                #widget.Sep(
-                #    linewidth=0,
-                #    padding=2
-                #),
                 widget.GroupBox(
                     font="Fira Code Nerd Font",
                     fontsize=18,
                     highlight_method="block",
-                    highlight_color=["202124"],
+                    highlight_color=[background],
                     rounded=False,
                     padding_x=5,
                     padding_y=4,
-                    active="#ffffff",
+                    active=foreground,
                     inactive="#7b7b7b",
-                    this_current_screen_border="208FE9",
-                    urgent_border="f03829",
+                    this_current_screen_border=blue,
+                    urgent_border=red,
                     disable_drag=True,
                     #margin_x=5,
                     spacing=2,
@@ -246,7 +248,7 @@ screens = [
                 widget.Prompt(
                     font="Fira Code Nerd Font",
                     fontsize=18,
-                    foreground="22b50f"
+                    foreground=green
                 ),
                 #widget.WindowName(
                 #    font="SF Pro Display",
@@ -292,7 +294,7 @@ screens = [
                 #    font="Fira Code Nerd Font",
                 #    fontsize=18,
                 #    foreground="22b50f",
-                #    format="Mem {MemUsed:}/{MemTotal:}",
+                #    format="Mem {MemUsed:.0f}/{MemTotal:.0f}",
                 #    padding=10
                 #),
                 #widget.Sep(
@@ -304,70 +306,77 @@ screens = [
                 widget.Battery(
                     font="Fira Code Nerd Font",
                     fontsize=18,
-                    foreground="ffffff",
+                    foreground=yellow,
                     unknown_char="",
                     charge_char="",
                     discharge_char="",
-                    low_foreground="EA4335",
+                    low_foreground=red,
                     low_percentage=0.25,
                     format="{char}  {percent:2.0%}",
                     padding=6
                 ),
                 widget.Sep(
-                    linewidth=3,
-                    size_percent=65,
+                    linewidth=1,
+                    size_percent=60,
                     padding=22,
-                    foreground="208FE9"
+                    foreground=foreground
                 ),
                 widget.TextBox(
                     text="Vol",
                     font="Fira Code Nerd Font",
                     fontsize=18,
-                    foreground="ffffff",
+                    foreground=blue,
                     padding=2
                 ),
                 widget.PulseVolume(
                     font="Fira Code Nerd Font",
                     fontsize=18,
-                    foreground="ffffff",
+                    foreground=blue,
                     padding=10
                 ),
                 widget.Sep(
-                    linewidth=3,
-                    size_percent=65,
+                    linewidth=1,
+                    size_percent=60,
                     padding=14,
-                    foreground="208FE9"
+                    foreground=foreground
                 ),
                 widget.Clock(
                     font="Fira Code Nerd Font",
                     fontsize=18,
                     format="%a %b %d",
-                    foreground="ffffff",
+                    foreground=green,
                     padding=10
                 ),
                 widget.Sep(
-                    linewidth=3,
-                    size_percent=65,
+                    linewidth=1,
+                    size_percent=60,
                     padding=14,
-                    foreground="208FE9"
+                    foreground=foreground
                 ),
                 widget.Clock(
                     font="Fira Code Nerd Font",
                     fontsize=18,
-                    #format="%a  %m/%d/%Y   %H : %M : %S",
                     format="%H:%M:%S",
-                    foreground="ffffff",
+                    foreground="FF6188",
                     padding=10
                 ),
+                widget.Image(
+                    filename="~/Downloads/logo.png",
+                    mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("/home/alphard/.config/rofi/powermenu/powermenu.sh")},
+                    margin=6
+                ),
+                widget.Sep(
+                    linewidth=0,
+                    size_percent=65,
+                    padding=5,
+                    mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("/home/alphard/.config/rofi/powermenu/powermenu.sh")}
+                )
             ],
             30,
-            background = "#191b1eCC",
-            opacity = 1,
-            #margin = [5,8,-3,8], 202427
+            background = "222222E6",
+            opacity = 1
         )
     ),
-    # gradient: 3E9726 to 2EC5EF
-    # yellow: f8aa0e
 ]
 
 # Drag floating layouts.

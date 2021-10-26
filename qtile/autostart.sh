@@ -2,6 +2,6 @@
 
 nitrogen --restore &
 
-#picom &
+picom --experimental-backends &
 
 brightnessctl set 1
