@@ -182,9 +182,36 @@ for i in groups:
         #     desc="move focused window to group {}".format(i.name)),
     ])
 
+# colors
+background = "#23272E"
+foreground = "#ffffff"
+
+normal={
+"black":  "#23272E",
+"red":    "#e05561",
+"green":  "#8cc265",
+"yellow": "#d18f52",
+"blue":   "#4aa5f0",
+"magenta":"#c162de",
+"cyan":   "#42b3c2",
+"white":  "#ffffff",
+}
+
+bright={
+"black":  "#7F848E",
+"red":    "#ff616e",
+"green":  "#a5e075",
+"yellow": "#f0a45d",
+"blue":   "#4dc4ff",
+"magenta":"#de73ff",
+"cyan":   "#4cd1e0",
+"white":  "#ffffff",
+}
+
+
 layout_theme = {"border_width":3,
 "margin":10,
-"border_focus": "61afef",
+"border_focus":normal["blue"],
 "border_normal":"000000"}
 
 layouts = [
@@ -202,20 +229,6 @@ widget_defaults = dict(
 extension_defaults = widget_defaults.copy()
 
 
-# colors
-background = "222222"
-foreground = "ffffff"
-
-black = "222222"
-red = "FF6188"
-green = "A9DC76"
-yellow = "FFD866"
-blue = "61afef"
-magenta = "AB9DF2"
-cyan = "78DCE8"
-white = "ffffff"
-
-
 screens = [
     Screen(
         top=bar.Bar(
@@ -230,8 +243,8 @@ screens = [
                     padding_y=4,
                     active=foreground,
                     inactive="#7b7b7b",
-                    this_current_screen_border=blue,
-                    urgent_border=red,
+                    this_current_screen_border=normal["blue"],
+                    urgent_border=normal["red"],
                     disable_drag=True,
                     #margin_x=5,
                     spacing=2,
@@ -248,7 +261,7 @@ screens = [
                 widget.Prompt(
                     font="Fira Code Nerd Font",
                     fontsize=18,
-                    foreground=green
+                    foreground=normal["green"]
                 ),
                 #widget.WindowName(
                 #    font="SF Pro Display",
@@ -306,11 +319,11 @@ screens = [
                 widget.Battery(
                     font="Fira Code Nerd Font",
                     fontsize=18,
-                    foreground=yellow,
+                    foreground=normal["magenta"],
                     unknown_char="",
                     charge_char="",
                     discharge_char="",
-                    low_foreground=red,
+                    low_foreground=normal["red"],
                     low_percentage=0.25,
                     format="{char}  {percent:2.0%}",
                     padding=6
@@ -325,13 +338,13 @@ screens = [
                     text="Vol",
                     font="Fira Code Nerd Font",
                     fontsize=18,
-                    foreground=blue,
+                    foreground=normal["blue"],
                     padding=2
                 ),
                 widget.PulseVolume(
                     font="Fira Code Nerd Font",
                     fontsize=18,
-                    foreground=blue,
+                    foreground=normal["blue"],
                     padding=10
                 ),
                 widget.Sep(
@@ -344,7 +357,7 @@ screens = [
                     font="Fira Code Nerd Font",
                     fontsize=18,
                     format="%a %b %d",
-                    foreground=green,
+                    foreground=normal["green"],
                     padding=10
                 ),
                 widget.Sep(
@@ -357,7 +370,7 @@ screens = [
                     font="Fira Code Nerd Font",
                     fontsize=18,
                     format="%H:%M:%S",
-                    foreground="FF6188",
+                    foreground=normal["red"],
                     padding=10
                 ),
                 widget.Image(
@@ -373,7 +386,7 @@ screens = [
                 )
             ],
             30,
-            background = "222222E6",
+            background = background,
             opacity = 1
         )
     ),

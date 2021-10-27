@@ -181,7 +181,7 @@ font:
 colors:
   # Default colors
   primary:
-    background: '#222222'
+    background: '#23272E'
     foreground: '#ffffff'
 
     # Bright and dim foreground colors
@@ -252,25 +252,24 @@ colors:
 
   # Normal colors
   normal:
-    #272822
-    black:   '#222222'
-    red:     '#FF6188'
-    green:   '#A9DC76'
-    yellow:  '#FFD866'
-    blue:    '#61afef'
-    magenta: '#AB9DF2'
-    cyan:    '#78DCE8'
+    black:   '#23272E'
+    red:     '#e05561'
+    green:   '#8cc265'
+    yellow:  '#d18f52'
+    blue:    '#4aa5f0'
+    magenta: '#c162de'
+    cyan:    '#42b3c2'
     white:   '#ffffff'
 
   # Bright colors
   bright:
-    black:   '#75715e'
-    red:     '#FF6188'
-    green:   '#A9DC76'
-    yellow:  '#FFD866'
-    blue:    '#61afef'
-    magenta: '#AB9DF2'
-    cyan:    '#78DCE8'
+    black:   '#7F848E'
+    red:     '#ff616e'
+    green:   '#a5e075'
+    yellow:  '#f0a45d'
+    blue:    '#4dc4ff'
+    magenta: '#de73ff'
+    cyan:    '#4cd1e0'
     white:   '#ffffff'
 
   # Dim colors
@@ -342,7 +341,7 @@ colors:
 #
 # Window opacity as a floating point number from `0.0` to `1.0`.
 # The value `0.0` is completely transparent and `1.0` is opaque.
-background_opacity: 0.87
+background_opacity: 1
 
 #selection:
   # This string contains all characters that are used as separators for

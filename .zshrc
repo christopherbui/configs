@@ -103,7 +103,7 @@ source $ZSH/oh-my-zsh.sh
 
 # VARIABLES
 export PF_INFO="ascii title os kernel pkgs de memory palette"
-
+export PF_COL1=6
 
 #neofetch --ascii_distro arch_small
 pfetch
