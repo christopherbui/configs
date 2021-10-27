@@ -181,7 +181,7 @@ font:
 colors:
   # Default colors
   primary:
-    background: '#23272E'
+    background: '#282C34'
     foreground: '#ffffff'
 
     # Bright and dim foreground colors
@@ -252,7 +252,7 @@ colors:
 
   # Normal colors
   normal:
-    black:   '#23272E'
+    black:   '#282C34'
     red:     '#e05561'
     green:   '#8cc265'
     yellow:  '#d18f52'
