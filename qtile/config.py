@@ -62,7 +62,7 @@ keys = [
     Key([mod], "space", lazy.spawn(app_launcher)),
 
     # Lock Screen
-    Key([mod],"l", lazy.spawn("betterlockscreen -l")),
+    Key([mod],"l", lazy.spawn("betterlockscreen -l --off 60")),
 
     # Lock Screen + Suspend
     Key([mod], "s", lazy.spawn("betterlockscreen -s")),
@@ -211,7 +211,7 @@ bright={
 
 layout_theme = {"border_width":3,
 "margin":10,
-"border_focus":normal["blue"],
+"border_focus":normal["cyan"],
 "border_normal":"000000"}
 
 layouts = [
@@ -243,7 +243,7 @@ screens = [
                     padding_y=4,
                     active=foreground,
                     inactive="#7b7b7b",
-                    this_current_screen_border=normal["blue"],
+                    this_current_screen_border=normal["cyan"],
                     urgent_border=normal["red"],
                     disable_drag=True,
                     #margin_x=5,
