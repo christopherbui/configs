@@ -49,7 +49,7 @@ mod = "mod1"
 terminal = "alacritty"
 #app_launcher = "rofi -combi-modi drun -font 'Fira Code Nerd Font 18' -show drun -icon-theme 'Papirus' -show-icons -width 48 -theme-str 'element-icon {size:2.8ch;}' -lines 10"
 app_launcher = "/home/alphard/.config/rofi/launchers/misc/launcher.sh"
-browser = "librewolf"
+browser = "chromium -disable-features=GlobalMediaControls"
 file_manager = "nautilus"
 music = "spotify --force-device-scale-factor=1.2"
 
@@ -183,7 +183,7 @@ for i in groups:
     ])
 
 # colors
-background = "#23272E"
+background = "#282C34"
 foreground = "#ffffff"
 
 normal={
