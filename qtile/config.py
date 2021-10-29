@@ -187,31 +187,31 @@ background = "#282C34"
 foreground = "#ffffff"
 
 normal={
-"black":  "#23272E",
-"red":    "#e05561",
-"green":  "#8cc265",
-"yellow": "#d18f52",
-"blue":   "#4aa5f0",
-"magenta":"#c162de",
-"cyan":   "#42b3c2",
+"black":  "#282C34",
+"red":    "#ff6480",
+"green":  "#3fc56b",
+"yellow": "#f9c859",
+"blue":   "#3691ff",
+"magenta":"#ff78f8",
+"cyan":   "#10b1fe",
 "white":  "#ffffff",
 }
 
 bright={
-"black":  "#7F848E",
-"red":    "#ff616e",
-"green":  "#a5e075",
-"yellow": "#f0a45d",
-"blue":   "#4dc4ff",
-"magenta":"#de73ff",
-"cyan":   "#4cd1e0",
+"black":  "#636d83",
+"red":    "#ff6480",
+"green":  "#3fc56b",
+"yellow": "#f9c859",
+"blue":   "#3691ff",
+"magenta":"#ff78f8",
+"cyan":   "#10b1fe",
 "white":  "#ffffff",
 }
 
 
-layout_theme = {"border_width":3,
+layout_theme = {"border_width":2,
 "margin":10,
-"border_focus":normal["cyan"],
+"border_focus":bright["cyan"],
 "border_normal":"000000"}
 
 layouts = [
@@ -236,15 +236,15 @@ screens = [
                 widget.GroupBox(
                     font="Fira Code Nerd Font",
                     fontsize=18,
-                    highlight_method="block",
-                    highlight_color=[background],
+                    highlight_method="line",
+                    highlight_color=[bright["black"]],
                     rounded=False,
                     padding_x=5,
                     padding_y=4,
                     active=foreground,
                     inactive="#7b7b7b",
                     this_current_screen_border=normal["cyan"],
-                    urgent_border=normal["red"],
+                    urgent_border=normal["cyan"],
                     disable_drag=True,
                     #margin_x=5,
                     spacing=2,
@@ -272,19 +272,24 @@ screens = [
                 #    background="1f1f1f" #c7dae4
                 #),
                 widget.Spacer(),
-                widget.Sep(
-                    linewidth=0,
-                    padding=5
+                widget.TextBox(
+                    text="",
+                    font="FontAwesome 5 Free Solid",
+                    fontsize=18,
+                    foreground=normal["yellow"]
                 ),
+                widget.OpenWeather(
+                    font="Fira Code Nerd Font",
+                    fontsize=18,
+                    foreground=normal["yellow"],
+                    zip=21211,
+                    format="{main_temp}° {weather_details}",
+                    metric=False,
+                    padding=10
+                ),
+                widget.Spacer(),
                 widget.Systray(
                 ),
-                #widget.TextBox(
-                #    text="│",
-                #    font="SF Pro Display",
-                #    fontsize=18,
-                #    padding=5,
-                #    foreground="11a8f8"
-                #),
                 widget.Sep(
                     linewidth=0,
                     padding=22
@@ -303,75 +308,97 @@ screens = [
                 #    padding=14,
                 #    foreground="c0caf5"
                 #),
-                #widget.Memory(
-                #    font="Fira Code Nerd Font",
-                #    fontsize=18,
-                #    foreground="22b50f",
-                #    format="Mem {MemUsed:.0f}/{MemTotal:.0f}",
-                #    padding=10
-                #),
-                #widget.Sep(
-                #    linewidth=1,
-                #    size_percent=65,
-                #    padding=14,
-                #    foreground="c0caf5"
-                #),
-                widget.Battery(
+                widget.TextBox(
+                    text="",
+                    font="FontAwesome 5 Free Solid",
+                    fontsize=18,
+                    foreground=normal["magenta"],
+                    padding=8
+                ),
+                widget.Memory(
                     font="Fira Code Nerd Font",
                     fontsize=18,
                     foreground=normal["magenta"],
+                    measure_mem="G",
+                    format="{MemUsed:.2f} GB",
+                    padding=6
+                ),
+                widget.Sep(
+                    linewidth=1,
+                    size_percent=60,
+                    padding=18,
+                    foreground=foreground
+                ),
+                widget.Battery(
+                    font="Fira Code Nerd Font",
+                    fontsize=18,
+                    foreground=normal["white"],
                     unknown_char="",
                     charge_char="",
                     discharge_char="",
                     low_foreground=normal["red"],
                     low_percentage=0.25,
                     format="{char}  {percent:2.0%}",
+                    padding=8
+                ),
+                widget.Sep(
+                    linewidth=1,
+                    size_percent=60,
+                    padding=18,
+                    foreground=foreground
+                ),
+                widget.TextBox(
+                    text="",
+                    font="FontAwesome 5 Free Solid",
+                    fontsize=18,
+                    foreground=normal["cyan"],
+                    padding=8
+                ),
+                widget.PulseVolume(
+                    font="Fira Code Nerd Font",
+                    fontsize=18,
+                    foreground=normal["cyan"],
                     padding=6
                 ),
                 widget.Sep(
                     linewidth=1,
                     size_percent=60,
-                    padding=22,
+                    padding=18,
                     foreground=foreground
                 ),
                 widget.TextBox(
-                    text="Vol",
-                    font="Fira Code Nerd Font",
+                    text="",
+                    font="FontAwesome 5 Free Solid",
                     fontsize=18,
-                    foreground=normal["blue"],
-                    padding=2
-                ),
-                widget.PulseVolume(
-                    font="Fira Code Nerd Font",
-                    fontsize=18,
-                    foreground=normal["blue"],
-                    padding=10
-                ),
-                widget.Sep(
-                    linewidth=1,
-                    size_percent=60,
-                    padding=14,
-                    foreground=foreground
+                    foreground=normal["green"],
+                    padding=8
                 ),
                 widget.Clock(
                     font="Fira Code Nerd Font",
                     fontsize=18,
                     format="%a %b %d",
                     foreground=normal["green"],
-                    padding=10
+                    padding=6
                 ),
                 widget.Sep(
                     linewidth=1,
                     size_percent=60,
-                    padding=14,
+                    padding=18,
                     foreground=foreground
+                ),
+                widget.TextBox(
+                    text="",
+                    font="FontAwesome 5 Free Solid",
+                    fontsize=18,
+                    foreground=normal["red"],
+                    padding=8
                 ),
                 widget.Clock(
                     font="Fira Code Nerd Font",
                     fontsize=18,
                     format="%H:%M:%S",
                     foreground=normal["red"],
-                    padding=10
+                    padding=6
                 ),
                 widget.Image(
                     filename="~/Downloads/logo.png",
@@ -386,7 +413,7 @@ screens = [
                 )
             ],
             30,
-            background = background,
+            background = background + "DE",
             opacity = 1
         )
     ),
