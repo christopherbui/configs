@@ -321,6 +321,7 @@ screens = [
                     foreground=normal["magenta"],
                     measure_mem="G",
                     format="{MemUsed:.2f} GB",
+                    mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("alacritty -e htop")},
                     padding=6
                 ),
                 widget.Sep(
@@ -378,6 +379,7 @@ screens = [
                     fontsize=18,
                     format="%a %b %d",
                     foreground=normal["green"],
+                    mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("alacritty -e /home/alphard/.config/qtile/calendar.sh")},
                     padding=6
                 ),
                 widget.Sep(
