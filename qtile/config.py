@@ -47,9 +47,10 @@ def autostart():
 
 mod = "mod1"
 terminal = "alacritty"
-#app_launcher = "rofi -combi-modi drun -font 'Fira Code Nerd Font 18' -show drun -icon-theme 'Papirus' -show-icons -width 48 -theme-str 'element-icon {size:2.8ch;}' -lines 10"
-app_launcher = "/home/alphard/.config/rofi/launchers/misc/launcher.sh"
-browser = "chromium -disable-features=GlobalMediaControls"
+app_launcher = "rofi -combi-modi drun -font 'Fira Code Nerd Font 18' -show drun -icon-theme 'Papirus' -show-icons -width 48 -theme-str 'element-icon {size:2.8ch;}' -lines 10"
+#app_launcher = "/home/alphard/.config/rofi/launchers/misc/launcher.sh"
+browser = "firefox"
+#browser = "chromium -disable-features=GlobalMediaControls"
 file_manager = "nautilus"
 music = "spotify --force-device-scale-factor=1.2"
 
@@ -256,7 +257,7 @@ screens = [
                     padding=10
                 ),
                 widget.CurrentLayoutIcon(
-                    scale=0.80,
+                    scale=0.7,
                 ),
                 widget.Prompt(
                     font="Fira Code Nerd Font",
@@ -321,7 +322,7 @@ screens = [
                     foreground=normal["magenta"],
                     measure_mem="G",
                     format="{MemUsed:.2f} GB",
-                    mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("alacritty -e htop")},
+                    #mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("alacritty -e htop")},
                     padding=6
                 ),
                 widget.Sep(
@@ -379,7 +380,7 @@ screens = [
                     fontsize=18,
                     format="%a %b %d",
                     foreground=normal["green"],
-                    mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("alacritty -e /home/alphard/.config/qtile/calendar.sh")},
+                    #mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("alacritty -e /home/alphard/.config/qtile/calendar.sh")},
                     padding=6
                 ),
                 widget.Sep(
@@ -404,18 +405,18 @@ screens = [
                 ),
                 widget.Image(
                     filename="~/Downloads/logo.png",
-                    mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("/home/alphard/.config/rofi/powermenu/powermenu.sh")},
+                    #mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("/home/alphard/.config/rofi/powermenu/powermenu.sh")},
                     margin=6
                 ),
                 widget.Sep(
                     linewidth=0,
                     size_percent=65,
                     padding=5,
-                    mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("/home/alphard/.config/rofi/powermenu/powermenu.sh")}
+                    #mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("/home/alphard/.config/rofi/powermenu/powermenu.sh")}
                 )
             ],
-            30,
-            background = background + "DE",
+            32,
+            background = background + "FF",
             opacity = 1
         )
     ),
