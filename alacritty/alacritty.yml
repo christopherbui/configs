@@ -1,4 +1,3 @@
-
 # Configuration for Alacritty, the GPU enhanced terminal emulator.
 
 # Import additional configuration files
@@ -151,7 +150,7 @@ font:
     style: Bold Italic
 
   # Point size
-  size: 12.0
+  size: 16.0
 
   # Offset is the extra space around each character. `offset.y` can be thought
   # of as modifying the line spacing, and `offset.x` as modifying the letter
@@ -181,8 +180,8 @@ font:
 colors:
   # Default colors
   primary:
-    background: '#282C34'
-    foreground: '#ffffff'
+    background: '#1e1e1e'
+    foreground: '#f7f6ec'
 
     # Bright and dim foreground colors
     #
@@ -252,25 +251,25 @@ colors:
 
   # Normal colors
   normal:
-    black:   '#282C34'
-    red:     '#ff6480'
-    green:   '#3fc56b'
-    yellow:  '#f9c859'
-    blue:    '#3691ff'
-    magenta: '#ff78f8'
-    cyan:    '#10b1fe'
-    white:   '#ffffff'
+    black:   '#343935'
+    red:     '#cf3f61'
+    green:   '#7bb75b'
+    yellow:  '#e9b32a'
+    blue:    '#4c9ad4'
+    magenta: '#a57fc4'
+    cyan:    '#389aad'
+    white:   '#fafaf6'
 
   # Bright colors
   bright:
-    black:   '#636d83'
-    red:     '#ff6480'
-    green:   '#3fc56b'
-    yellow:  '#f9c859'
-    blue:    '#3691ff'
-    magenta: '#ff78f8'
-    cyan:    '#10b1fe'
-    white:   '#ffffff'
+    black:   '#595b59'
+    red:     '#d18fa6'
+    green:   '#767f2c'
+    yellow:  '#78592f'
+    blue:    '#135979'
+    magenta: '#604291'
+    cyan:    '#76bbca'
+    white:   '#b2b5ae'
 
   # Dim colors
   #
@@ -341,7 +340,7 @@ colors:
 #
 # Window opacity as a floating point number from `0.0` to `1.0`.
 # The value `0.0` is completely transparent and `1.0` is opaque.
-background_opacity: 0.95
+background_opacity: 1
 
 #selection:
   # This string contains all characters that are used as separators for
