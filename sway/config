@@ -174,8 +174,8 @@ font pango: Ubuntu
     # You can "split" the current object of your focus with
     # $mod+b or $mod+v, for horizontal and vertical splits
     # respectively.
-    bindsym $mod+b splith
-    bindsym $mod+v splitv
+    bindsym $mod+v splith
+    bindsym $mod+Shift+b splitv
 
     # Switch the current container between different layout styles
     bindsym $mod+s layout stacking
@@ -183,7 +183,7 @@ font pango: Ubuntu
     bindsym $mod+e layout toggle split
 
     # Make the current focus fullscreen
-    bindsym $mod+f fullscreen
+    #bindsym $mod+f fullscreen
 
     # Toggle the current focus between tiling and floating mode
     bindsym $mod+Shift+space floating toggle
@@ -265,3 +265,26 @@ client.unfocused #000000 #000000 #000000 #000000 #000000
 
 ### SWAP ALT & SUPER
 input "type:keyboard" xkb_options altwin:swap_alt_win
+
+### VOLUME
+bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 2%+
+bindsym XF86AudioLowerVolume exec amixer -D pulse sset Master 2%-
+bindsym XF86AudioMute exec amixer -D pulse sset Master toggle
+
+### BRIGHTNESS
+bindsym XF86MonBrightnessUp exec light -A 1
+bindsym XF86MonBrightnessDown exec light -U 1
+bindsym control+Shift+XF86MonBrightnessDown exec light -S 0.01
+
+### NIGHTLIGHT
+bindsym $mod+n exec redshift -P -O 4900
+bindsym $mod+Shift+n exec redshift -x
+
+
+bindsym $mod+b exec librewolf
+bindsym $mod+c exec code
+bindsym $mod+f exec nautilus
+bindsym $mod+g exec gedit
+bindsym $mod+t exec typora
+bindsym $mod+p exec evince
+bindsym $mod+m exec spotify --force-device-scale-factor=1.2

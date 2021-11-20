@@ -6,7 +6,7 @@
     // Choose the order of the modules
     "modules-left": ["sway/workspaces"],
     "modules-center": [],
-    "modules-right": ["tray", "pulseaudio", "battery", "clock#clock2", "clock"],
+    "modules-right": ["tray", "memory", "pulseaudio", "battery", "clock#clock2", "clock"],
     // Modules configuration
     // "sway/workspaces": {
     //     "disable-scroll": true,
@@ -23,6 +23,9 @@
     //         "default": ""
     //     }
     // },
+    "sway/workspaces": {
+        "all-outputs": true
+    },
     "sway/window": {
         "format": "{}",
         "tooltip": false
