@@ -4,6 +4,15 @@
 #
 # Read `man 5 sway` for a complete reference.
 
+set $gnome-schema org.gnome.desktop.interface
+exec_always {
+    gsettings set $gnome-schema gtk-theme 'Yaru-Aqua-dark'
+    gsettings set $gnome-schema icon-theme 'Papirus'
+    gsettings set $gnome-schema decoration-layout 'menu'
+}
+
+exec /home/alphard/.pyenv/shims/autotiling
+
 ### WINDOW BORDER
 default_border pixel 2
 
@@ -18,7 +27,7 @@ set $mod Mod4
 set $left h
 set $down j
 set $up k
-set $right l
+#set $right l
 
 ### TERMINAL
 set $term alacritty
@@ -48,7 +57,7 @@ seat seat0 xcursor_theme Bibata-Modern-Classic
 
 
 ### WALLPAPER
-output * bg ~/Pictures/Wallpapers/seattle.jpg fill
+output * bg ~/Pictures/Wallpapers/mac.jpg fill
 
 
 ### FONT
@@ -124,7 +133,7 @@ font pango: Ubuntu
     bindsym $mod+$left focus left
     bindsym $mod+$down focus down
     bindsym $mod+$up focus up
-    bindsym $mod+$right focus right
+    #bindsym $mod+$right focus right
     # Or use $mod+[up|down|left|right]
     bindsym $mod+Left focus left
     bindsym $mod+Down focus down
@@ -135,7 +144,7 @@ font pango: Ubuntu
     bindsym $mod+Shift+$left move left
     bindsym $mod+Shift+$down move down
     bindsym $mod+Shift+$up move up
-    bindsym $mod+Shift+$right move right
+    #bindsym $mod+Shift+$right move right
     # Ditto, with arrow keys
     bindsym $mod+Shift+Left move left
     bindsym $mod+Shift+Down move down
@@ -178,7 +187,7 @@ font pango: Ubuntu
     bindsym $mod+Shift+b splitv
 
     # Switch the current container between different layout styles
-    bindsym $mod+s layout stacking
+    #bindsym $mod+s layout stacking
     #bindsym $mod+w layout tabbed
     bindsym $mod+e layout toggle split
 
@@ -218,7 +227,7 @@ mode "resize" {
     bindsym $left resize shrink width 10px
     bindsym $down resize grow height 10px
     bindsym $up resize shrink height 10px
-    bindsym $right resize grow width 10px
+    #bindsym $right resize grow width 10px
 
     # Ditto, with arrow keys
     bindsym Left resize shrink width 10px
@@ -280,7 +289,10 @@ bindsym control+Shift+XF86MonBrightnessDown exec light -S 0.01
 bindsym $mod+n exec redshift -P -O 4900
 bindsym $mod+Shift+n exec redshift -x
 
-
+bindsym $mod+Shift+delete exec alacritty -e /usr/local/bin/shutdown-prompt
+bindsym $mod+Shift+r exec alacritty -e /usr/local/bin/reboot-prompt
+bindsym $mod+s exec alacritty -e /usr/local/bin/suspend-prompt
+bindsym $mod+l exec swaylock --clock -c 000000
 bindsym $mod+b exec librewolf
 bindsym $mod+c exec code
 bindsym $mod+f exec nautilus
