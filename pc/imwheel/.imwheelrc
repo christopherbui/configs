@@ -1,0 +1,60 @@
+"^Navigator$"
+    None, Up, Button4, 2.8
+    None, Down, Button5, 2.8
+    Shift_L,   Up,   Shift_L|Button4, 4
+    Shift_L,   Down, Shift_L|Button5, 4
+    Control_L, Up,   Control_L|Button4
+    Control_L, Down, Control_L|Button5
+
+
+"^chromium$"
+    None, Up, Button4, 4.7
+    None, Down, Button5, 4.7
+    Shift_L,   Up,   Shift_L|Button4, 4
+    Shift_L,   Down, Shift_L|Button5, 4
+    Control_L, Up,   Control_L|Button4
+    Control_L, Down, Control_L|Button5
+
+
+"^code-oss$"
+    None, Up, Button4, 2
+    None, Down, Button5, 2
+    Shift_L,   Up,   Shift_L|Button4, 4
+    Shift_L,   Down, Shift_L|Button5, 4
+    Control_L, Up,   Control_L|Button4
+    Control_L, Down, Control_L|Button5
+
+
+"^evince$"
+    None, Up, Button4, 2
+    None, Down, Button5, 2
+    Shift_L,   Up,   Shift_L|Button4, 4
+    Shift_L,   Down, Shift_L|Button5, 4
+    Control_L, Up,   Control_L|Button4
+    Control_L, Down, Control_L|Button5
+
+
+"^typora$"
+    None, Up, Button4, 3
+    None, Down, Button5, 3
+    Shift_L,   Up,   Shift_L|Button4, 4
+    Shift_L,   Down, Shift_L|Button5, 4
+    Control_L, Up,   Control_L|Button4
+    Control_L, Down, Control_L|Button5
+
+
+"^spotify$"
+    None, Up, Button4, 3
+    None, Down, Button5, 3
+    Shift_L,   Up,   Shift_L|Button4, 4
+    Shift_L,   Down, Shift_L|Button5, 4
+    Control_L, Up,   Control_L|Button4
+    Control_L, Down, Control_L|Button5
+
+"^libreoffice$"
+    None, Up, Button4, 2.6
+    None, Down, Button5, 2.6
+    Shift_L,   Up,   Shift_L|Button4, 4
+    Shift_L,   Down, Shift_L|Button5, 4
+    Control_L, Up,   Control_L|Button4
+    Control_L, Down, Control_L|Button5
