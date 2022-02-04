@@ -31,22 +31,26 @@ from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
 
+
 # Autostart
 import os
 import subprocess
-from libqtile import hook
+from libqtile import hook, qtile
+
 
 @hook.subscribe.startup_once
 def autostart():
-    home = os.path.expanduser("~")
-    subprocess.call([home + "/.config/qtile/autostart.sh"])
+    home = os.path.expanduser('~')
+    subprocess.call([home + '/.config/qtile/autostart.sh'])
 
-home = os.path.expanduser("~")
+
 
 mod = "mod1"
 terminal = "alacritty"
 app_launcher = "rofi -combi-modi drun -font 'Fira Code Nerd Font 18' -show drun -icon-theme 'Papirus' -show-icons -width 48 -theme-str 'element-icon {size:2.8ch;}' -lines 10"
+#app_launcher = "/home/alphard/.config/rofi/launchers/misc/launcher.sh"
 browser = "firefox"
+#browser = "chromium -disable-features=GlobalMediaControls"
 file_manager = "nautilus"
 music = "spotify --force-device-scale-factor=1.2"
 
@@ -65,10 +69,10 @@ keys = [
     Key([mod], "s", lazy.spawn("betterlockscreen -s")),
     
     # Shutdown
-    Key([mod, "shift"], "Delete", lazy.spawn("alacritty -e" + home + "/.config/qtile/shutdown.sh")),
+    Key([mod, "shift"], "Delete", lazy.spawn("alacritty -e /home/alphard/.config/qtile/shutprompt.sh")),
 
     # Reboot
-    Key([mod, "shift"], "r", lazy.spawn("alacritty -e" + home + "/.config/qtile/reboot.sh")),
+    Key([mod, "shift"], "r", lazy.spawn("reboot")),
 
     # Volume
     Key([], "XF86AudioRaiseVolume", lazy.spawn("amixer -D pulse sset Master 2%+")),
@@ -111,20 +115,25 @@ keys = [
     # Music
     Key([mod], "m", lazy.spawn(music)),
 
-    # Prompt widget
-    Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
-
     # Switch between windows
     Key([mod], "Tab", lazy.layout.down(), desc="Move focus down"),
     Key([mod, "shift"], "Tab", lazy.layout.up(), desc="Move focus up"),
 
-    # Move windows
+    # Move windows between left/right columns or move up/down in current stack.
+    # Moving out of range in Columns layout will create new column.
     Key([mod], "Left", lazy.layout.shuffle_left(), desc="Move window to the left"),
     Key([mod], "Right", lazy.layout.shuffle_right(), desc="Move window to the right"),
     Key([mod], "Down", lazy.layout.shuffle_down(), desc="Move window down"),
     Key([mod], "Up", lazy.layout.shuffle_up(), desc="Move window up"),
 
-    # Resize windows
+    # Grow windows. If current window is on the edge of screen and direction
+    # will be to screen edge - window would shrink.
+    #Key([mod, "control"], "h", lazy.layout.grow_left(), desc="Grow window to the left"),
+    #Key([mod, "control"], "l", lazy.layout.grow_right(), desc="Grow window to the right"),
+    #Key([mod, "control"], "j", lazy.layout.grow_down(), desc="Grow window down"),
+    #Key([mod, "control"], "k", lazy.layout.grow_up(), desc="Grow window up"),
+    #Key([mod], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
+
     Key([mod, "control"], "h",
         lazy.layout.grow_right(),
         lazy.layout.grow(),
@@ -148,13 +157,13 @@ keys = [
         lazy.layout.increase_nmaster(),
         ),
 
-    # Toggle layouts
+    # Toggle between different layouts as defined below
     Key([mod, "shift"], "l", lazy.next_layout(), desc="Toggle between layouts"),
     Key([mod], "w", lazy.window.kill(), desc="Kill focused window"),
 
-    # Restart / Shutdown Qtile
     Key([mod, "control"], "r", lazy.restart(), desc="Restart Qtile"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
+    Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
 ]
 
 groups = [Group(i) for i in "1234567"]
@@ -174,26 +183,37 @@ for i in groups:
         #     desc="move focused window to group {}".format(i.name)),
     ])
 
-# Colors
-background = "#282828"
-foreground = "#ebdbb2"
+# colors
+background = "#282C34"
+foreground = "#ffffff"
 
-color={
-"black":  "#282828",
-"red":    "#fb4934",
-"green":  "#b8bb26",
-"yellow": "#fabd2f",
-"blue":   "#83a598",
-"magenta":"#d3869b",
-"cyan":   "#8ec07c",
-"white":  "#ebdbb2",
+normal={
+"black":  "#282C34",
+"red":    "#ff6480",
+"green":  "#3fc56b",
+"yellow": "#f9c859",
+"blue":   "#3691ff",
+"magenta":"#ff78f8",
+"cyan":   "#10b1fe",
+"white":  "#ffffff",
 }
 
-# Layout defaults
-layout_theme = {"border_width":4,
-"margin":8,
-"border_focus":color["yellow"],
-"border_normal":color["black"]}
+bright={
+"black":  "#636d83",
+"red":    "#ff6480",
+"green":  "#3fc56b",
+"yellow": "#f9c859",
+"blue":   "#3691ff",
+"magenta":"#ff78f8",
+"cyan":   "#10b1fe",
+"white":  "#ffffff",
+}
+
+
+layout_theme = {"border_width":2,
+"margin":10,
+"border_focus":bright["cyan"],
+"border_normal":"000000"}
 
 layouts = [
     layout.MonadTall(**layout_theme),
@@ -202,33 +222,34 @@ layouts = [
     layout.Floating(**layout_theme),
 ]
 
-# Widget defaults
 widget_defaults = dict(
-    font='FiraCode Nerd Font Bold',
-    fontsize=18,
-    padding=3
+    font='sans',
+    fontsize=12,
+    padding=3,
 )
-
 extension_defaults = widget_defaults.copy()
+
 
 screens = [
     Screen(
         top=bar.Bar(
             [
                 widget.GroupBox(
-                    font="FiraCode Nerd Font",
+                    font="Fira Code Nerd Font",
+                    fontsize=18,
                     highlight_method="line",
-                    highlight_color=background,
+                    highlight_color=["#4E5766"],
                     rounded=False,
                     padding_x=5,
                     padding_y=4,
                     active=foreground,
-                    inactive="#988BA2",
-                    this_current_screen_border=color["cyan"],
-                    urgent_border=color["red"],
+                    inactive="#7b7b7b",
+                    this_current_screen_border=normal["cyan"],
+                    urgent_border=normal["cyan"],
                     disable_drag=True,
-                    margin_y=3,
-                    spacing=4,
+                    #margin_x=5,
+                    spacing=2,
+                    #hide_unused=True
                     use_mouse_wheel=False
                 ),
                 widget.Sep(
@@ -236,129 +257,167 @@ screens = [
                     padding=10
                 ),
                 widget.CurrentLayoutIcon(
-                    scale=0.7
-                ),
-                widget.Sep(
-                    linewidth=0,
-                    padding=10
+                    scale=0.7,
                 ),
                 widget.Prompt(
-                    foreground=color["green"]
+                    font="Fira Code Nerd Font",
+                    fontsize=18,
+                    foreground=normal["green"]
                 ),
+                #widget.WindowName(
+                #    font="SF Pro Display",
+                #    fontsize=18,
+                #    format="  {name}",
+                #    max_chars=75,
+                #    foreground="ffffff",
+                #    background="1f1f1f" #c7dae4
+                #),
                 widget.Spacer(),
-                widget.Clock(
-                    format="%H:%M:%S",
-                    #format="%H:%M",
-                    foreground=color["red"],
-                    padding=6
+                widget.TextBox(
+                    text="",
+                    font="FontAwesome 5 Free Solid",
+                    fontsize=18,
+                    foreground=normal["yellow"]
+                ),
+                widget.OpenWeather(
+                    font="Fira Code Nerd Font",
+                    fontsize=18,
+                    foreground=normal["yellow"],
+                    zip=21211,
+                    format="{main_temp}° {weather_details}",
+                    metric=False,
+                    padding=10
                 ),
                 widget.Spacer(),
                 widget.Systray(
-                    icon_size=24
                 ),
                 widget.Sep(
                     linewidth=0,
+                    padding=22
+                ),
+                #widget.CPU(
+                #    font="Fira Code Nerd Font",
+                #    fontsize=18,
+                #    foreground="cf3f61",
+                #    format="CPU {load_percent}%",
+                #    update_interval=5,
+                #    padding=10
+                #),
+                #widget.Sep(
+                #    linewidth=1,
+                #    size_percent=65,
+                #    padding=14,
+                #    foreground="c0caf5"
+                #),
+                widget.TextBox(
+                    text="",
+                    font="FontAwesome 5 Free Solid",
+                    fontsize=18,
+                    foreground=normal["magenta"],
+                    padding=8
+                ),
+                widget.Memory(
+                    font="Fira Code Nerd Font",
+                    fontsize=18,
+                    foreground=normal["magenta"],
+                    measure_mem="G",
+                    format="{MemUsed:.2f} GB",
+                    #mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("alacritty -e htop")},
+                    padding=6
+                ),
+                widget.Sep(
+                    linewidth=1,
                     size_percent=60,
-                    padding=34,
+                    padding=18,
                     foreground=foreground
                 ),
-                widget.WidgetBox(
-                    font='FontAwesome5 Free',
-                    foreground=color["magenta"],
-                    fontsize=20,
-                    close_button_location='right',
-                    text_closed='',
-                    text_open='',
-                    widgets=[
-                        widget.Memory(
-                            foreground=color["magenta"],
-                            measure_mem="G",
-                            format="{MemUsed:.2f} GB",
-                            #mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("alacritty -e htop")},
-                            padding=10
-                        )
-                    ]
+                widget.Battery(
+                    font="Fira Code Nerd Font",
+                    fontsize=18,
+                    foreground=normal["white"],
+                    unknown_char="",
+                    charge_char="",
+                    discharge_char="",
+                    low_foreground=normal["red"],
+                    low_percentage=0.25,
+                    format="{char}  {percent:2.0%}",
+                    padding=8
+                ),
+                widget.Sep(
+                    linewidth=1,
+                    size_percent=60,
+                    padding=18,
+                    foreground=foreground
+                ),
+                widget.TextBox(
+                    text="",
+                    font="FontAwesome 5 Free Solid",
+                    fontsize=18,
+                    foreground=normal["cyan"],
+                    padding=8
+                ),
+                widget.PulseVolume(
+                    font="Fira Code Nerd Font",
+                    fontsize=18,
+                    foreground=normal["cyan"],
+                    padding=6
+                ),
+                widget.Sep(
+                    linewidth=1,
+                    size_percent=60,
+                    padding=18,
+                    foreground=foreground
+                ),
+                widget.TextBox(
+                    text="",
+                    font="FontAwesome 5 Free Solid",
+                    fontsize=18,
+                    foreground=normal["green"],
+                    padding=8
+                ),
+                widget.Clock(
+                    font="Fira Code Nerd Font",
+                    fontsize=18,
+                    format="%a %b %d",
+                    foreground=normal["green"],
+                    #mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("alacritty -e /home/alphard/.config/qtile/calendar.sh")},
+                    padding=6
+                ),
+                widget.Sep(
+                    linewidth=1,
+                    size_percent=60,
+                    padding=18,
+                    foreground=foreground
+                ),
+                widget.TextBox(
+                    text="",
+                    font="FontAwesome 5 Free Solid",
+                    fontsize=18,
+                    foreground=normal["red"],
+                    padding=8
+                ),
+                widget.Clock(
+                    font="Fira Code Nerd Font",
+                    fontsize=18,
+                    format="%H:%M:%S",
+                    foreground=normal["red"],
+                    padding=6
+                ),
+                widget.Image(
+                    filename="~/Downloads/logo.png",
+                    #mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("/home/alphard/.config/rofi/powermenu/powermenu.sh")},
+                    margin=6
                 ),
                 widget.Sep(
                     linewidth=0,
-                    size_percent=60,
-                    padding=34,
-                    foreground=foreground
-                ),
-                widget.WidgetBox(
-                    font='FontAwesome5 Free',
-                    foreground=color["yellow"],
-                    fontsize=20,
-                    close_button_location='right',
-                    text_closed='',
-                    text_open='',
-                    widgets=[
-                        widget.Battery(
-                            foreground=color["yellow"],
-                            charge_char="",
-                            discharge_char="",
-                            low_foreground=color["red"],
-                            low_percentage=0.25,
-                            format="{char} {percent:2.0%}",
-                            padding=10
-                        )
-                    ]
-                ),
-                widget.Sep(
-                    linewidth=0,
-                    size_percent=60,
-                    padding=34,
-                    foreground=foreground
-                ),
-                widget.WidgetBox(
-                    font='FontAwesome5 Free',
-                    foreground=color["blue"],
-                    fontsize=20,
-                    close_button_location='right',
-                    text_closed='',
-                    text_open='',
-                    widgets=[
-                        widget.PulseVolume(
-                            foreground=color["blue"],
-                            padding=10
-                        )
-                    ]
-                ),
-                widget.Sep(
-                    linewidth=0,
-                    size_percent=60,
-                    padding=34,
-                    foreground=foreground
-                ),
-                widget.WidgetBox(
-                    font='FontAwesome5 Free',
-                    foreground=color["green"],
-                    fontsize=20,
-                    close_button_location='right',
-                    text_closed='',
-                    text_open='',
-                    widgets=[
-                        widget.Clock(
-                            format="%a %b %d",
-                            foreground=color["green"],
-                            #mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("alacritty -e /home/alphard/.config/qtile/calendar.sh")},
-                            padding=10
-                        )
-                    ]
-                ),
-                widget.Sep(
-                    linewidth=0,
-                    size_percent=60,
-                    padding=16,
-                    foreground=foreground
-                ),
+                    size_percent=65,
+                    padding=5,
+                    #mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("/home/alphard/.config/rofi/powermenu/powermenu.sh")}
+                )
             ],
             32,
-            border_width=[4, 4, 4, 4],
-            border_color=["000000", "000000", "000000", "000000"],
-            background = background + "D9",
-            opacity = 1,
-            margin=[6, 8, 0, 8]
+            background = background + "FF",
+            opacity = 1
         )
     ),
 ]
@@ -370,6 +429,12 @@ mouse = [
     Click([mod], "Button2", lazy.window.bring_to_front())
 ]
 
+dgroups_key_binder = None
+dgroups_app_rules = []  # type: List
+main = None  # WARNING: this is deprecated and will be removed soon
+follow_mouse_focus = True
+bring_front_click = False
+cursor_warp = False
 floating_layout = layout.Floating(float_rules=[
     # Run the utility of `xprop` to see the wm class and name of an X client.
     *layout.Floating.default_float_rules,
@@ -380,14 +445,6 @@ floating_layout = layout.Floating(float_rules=[
     Match(title='branchdialog'),  # gitk
     Match(title='pinentry'),  # GPG key password entry
 ])
-
-dgroups_key_binder = None
-dgroups_app_rules = []  # type: List
-main = None  # WARNING: this is deprecated and will be removed soon
-follow_mouse_focus = True
-bring_front_click = False
-cursor_warp = False
-
 auto_fullscreen = True
 focus_on_window_activation = "smart"
 
