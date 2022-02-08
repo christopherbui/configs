@@ -81,7 +81,7 @@ keys = [
     Key(["control", "shift"], "XF86MonBrightnessDown", lazy.spawn("brightnessctl set 1")),
 
     # Nightlight
-    Key([mod], "n", lazy.spawn("redshift -P -O 4900")),
+    Key([mod], "n", lazy.spawn("redshift -P -O 5800")),
     Key([mod, "shift"], "n", lazy.spawn("redshift -x")),
 
     # Screenshot
@@ -175,25 +175,25 @@ for i in groups:
     ])
 
 # Colors
-background = "#282828"
-foreground = "#ebdbb2"
+background = "#282c34"
+foreground = "#fffefe"
 
 color={
-"black":  "#282828",
-"red":    "#fb4934",
-"green":  "#b8bb26",
-"yellow": "#fabd2f",
-"blue":   "#83a598",
-"magenta":"#d3869b",
-"cyan":   "#8ec07c",
-"white":  "#ebdbb2",
+"black":  "#5c6370",
+"red":    "#e06c75",
+"green":  "#98c379",
+"yellow": "#e5c07b",
+"blue":   "#61afef",
+"magenta":"#c678dd",
+"cyan":   "#56b6c2",
+"white":  "#abb2bf",
 }
 
 # Layout defaults
 layout_theme = {"border_width":4,
 "margin":8,
-"border_focus":color["yellow"],
-"border_normal":color["black"]}
+"border_focus":color["cyan"],
+"border_normal":"000000"}
 
 layouts = [
     layout.MonadTall(**layout_theme),
@@ -356,7 +356,7 @@ screens = [
             32,
             border_width=[4, 4, 4, 4],
             border_color=["000000", "000000", "000000", "000000"],
-            background = background + "D9",
+            background = background + "CC",
             opacity = 1,
             margin=[6, 8, 0, 8]
         )

@@ -1,0 +1,1 @@
+https://github.com/qtile/qtile/issues/1515

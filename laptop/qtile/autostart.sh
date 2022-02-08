@@ -4,4 +4,4 @@ nitrogen --restore &
 
 picom --experimental-backends &
 
-brightnessctl set 10%
+brightnessctl set 5%

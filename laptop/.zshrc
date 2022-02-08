@@ -108,8 +108,8 @@ export PF_COL1=6
 #neofetch --ascii_distro arch_small
 pfetch
 
-export LSD="$HOME/.cargo/bin"
-export PATH="$LSD:$PATH"
+export CARGO="$HOME/.cargo/bin"
+export PATH="$CARGO:$PATH"
 
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
