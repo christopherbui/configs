@@ -34,7 +34,7 @@ from libqtile.utils import guess_terminal
 # Autostart
 import os
 import subprocess
-from libqtile import hook
+from libqtile import hook, qtile
 
 @hook.subscribe.startup_once
 def autostart():
@@ -152,9 +152,9 @@ keys = [
     Key([mod, "shift"], "l", lazy.next_layout(), desc="Toggle between layouts"),
     Key([mod], "w", lazy.window.kill(), desc="Kill focused window"),
 
-    # Restart / Shutdown Qtile
+    # Restart / Quit Qtile
     Key([mod, "control"], "r", lazy.restart(), desc="Restart Qtile"),
-    Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
+    Key([mod, "control"], "q", lazy.shutdown(), desc="Quit Qtile"),
 ]
 
 groups = [Group(i) for i in "1234567"]
@@ -175,18 +175,18 @@ for i in groups:
     ])
 
 # Colors
-background = "#282c34"
-foreground = "#fffefe"
+background = "#272822"
+foreground = "#f6f7ec"
 
 color={
-"black":  "#5c6370",
-"red":    "#e06c75",
-"green":  "#98c379",
-"yellow": "#e5c07b",
-"blue":   "#61afef",
-"magenta":"#c678dd",
-"cyan":   "#56b6c2",
-"white":  "#abb2bf",
+"black":  "#75715e",
+"red":    "#f92672",
+"green":  "#a6e22e",
+"yellow": "#f4bf75",
+"blue":   "#66d9ef",
+"magenta":"#ae81ff",
+"cyan":   "#2aa198",
+"white":  "#e8eced",
 }
 
 # Layout defaults
@@ -243,13 +243,13 @@ screens = [
                     padding=10
                 ),
                 widget.Prompt(
-                    foreground=color["green"]
+                    foreground=color["white"]
                 ),
                 widget.Spacer(),
                 widget.Clock(
                     format="%H:%M:%S",
                     #format="%H:%M",
-                    foreground=color["red"],
+                    foreground=color["white"],
                     padding=6
                 ),
                 widget.Spacer(),
@@ -264,37 +264,14 @@ screens = [
                 ),
                 widget.WidgetBox(
                     font='FontAwesome5 Free',
-                    foreground=color["magenta"],
-                    fontsize=20,
-                    close_button_location='right',
-                    text_closed='',
-                    text_open='',
-                    widgets=[
-                        widget.Memory(
-                            foreground=color["magenta"],
-                            measure_mem="G",
-                            format="{MemUsed:.2f} GB",
-                            #mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("alacritty -e htop")},
-                            padding=10
-                        )
-                    ]
-                ),
-                widget.Sep(
-                    linewidth=0,
-                    size_percent=60,
-                    padding=34,
-                    foreground=foreground
-                ),
-                widget.WidgetBox(
-                    font='FontAwesome5 Free',
-                    foreground=color["yellow"],
+                    foreground=color["white"],
                     fontsize=20,
                     close_button_location='right',
                     text_closed='',
                     text_open='',
                     widgets=[
                         widget.Battery(
-                            foreground=color["yellow"],
+                            foreground=color["white"],
                             charge_char="",
                             discharge_char="",
                             low_foreground=color["red"],
@@ -312,14 +289,17 @@ screens = [
                 ),
                 widget.WidgetBox(
                     font='FontAwesome5 Free',
-                    foreground=color["blue"],
+                    foreground=color["white"],
                     fontsize=20,
                     close_button_location='right',
-                    text_closed='',
-                    text_open='',
+                    text_closed='',
+                    text_open='',
                     widgets=[
-                        widget.PulseVolume(
-                            foreground=color["blue"],
+                        widget.Memory(
+                            foreground=color["white"],
+                            measure_mem="G",
+                            format="{MemUsed:.2f} GB",
+                            #mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("alacritty -e htop")},
                             padding=10
                         )
                     ]
@@ -332,7 +312,27 @@ screens = [
                 ),
                 widget.WidgetBox(
                     font='FontAwesome5 Free',
-                    foreground=color["green"],
+                    foreground=color["white"],
+                    fontsize=20,
+                    close_button_location='right',
+                    text_closed='',
+                    text_open='',
+                    widgets=[
+                        widget.PulseVolume(
+                            foreground=color["white"],
+                            padding=10
+                        )
+                    ]
+                ),
+                widget.Sep(
+                    linewidth=0,
+                    size_percent=60,
+                    padding=34,
+                    foreground=foreground
+                ),
+                widget.WidgetBox(
+                    font='FontAwesome5 Free',
+                    foreground=color["white"],
                     fontsize=20,
                     close_button_location='right',
                     text_closed='',
@@ -340,8 +340,54 @@ screens = [
                     widgets=[
                         widget.Clock(
                             format="%a %b %d",
-                            foreground=color["green"],
+                            foreground=color["white"],
                             #mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("alacritty -e /home/alphard/.config/qtile/calendar.sh")},
+                            padding=10
+                        )
+                    ]
+                ),
+                widget.Sep(
+                    linewidth=0,
+                    size_percent=60,
+                    padding=34,
+                    foreground=foreground
+                ),
+                widget.WidgetBox(
+                    font='FontAwesome5 Free',
+                    foreground=color["white"],
+                    fontsize=20,
+                    close_button_location='right',
+                    text_closed='',
+                    text_open='',
+                    widgets=[
+                        widget.TextBox(
+                            text="lock",
+                            foreground=color["white"],
+                            mouse_callbacks={"Button1": lazy.spawn("betterlockscreen -l --off 60")},
+                            padding=10
+                        ),
+                        widget.TextBox(
+                            text="logout",
+                            foreground=color["white"],
+                            mouse_callbacks={"Button1": lazy.shutdown()},
+                            padding=10
+                        ),
+                        widget.TextBox(
+                            text="suspend",
+                            foreground=color["white"],
+                            mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("betterlockscreen -s")},
+                            padding=10
+                        ),
+                        widget.TextBox(
+                            text="reboot",
+                            foreground=color["white"],
+                            mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("reboot")},
+                            padding=10
+                        ),
+                        widget.TextBox(
+                            text="shutdown",
+                            foreground=color["white"],
+                            mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("shutdown now")},
                             padding=10
                         )
                     ]

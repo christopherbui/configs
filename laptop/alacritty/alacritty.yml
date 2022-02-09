@@ -46,7 +46,7 @@ window:
   # Blank space added around the window in pixels. This padding is scaled
   # by DPI and the specified value is always added at both opposing sides.
   padding:
-    x: 4
+    x: 6
     y: 6
 
   # Spread additional padding evenly around the terminal content.
@@ -185,8 +185,8 @@ font:
 colors:
   # Default colors
   primary:
-    background: '#282c34'
-    foreground: '#fffefe'
+    background: '#272822'
+    foreground: '#e8eced'
 
     # Bright and dim foreground colors
     #
@@ -274,25 +274,25 @@ colors:
 
   # Normal colors
   normal:
-    black:   '#282c34'
-    red:     '#e06c75'
-    green:   '#98c379'
-    yellow:  '#e5c07b'
-    blue:    '#61afef'
-    magenta: '#c678dd'
-    cyan:    '#56b6c2'
-    white:   '#abb2bf'
+    black:   '#272822'
+    red:     '#f92672'
+    green:   '#a6e22e'
+    yellow:  '#f4bf75'
+    blue:    '#66d9ef'
+    magenta: '#ae81ff'
+    cyan:    '#2aa198'
+    white:   '#e8eced'
 
   # Bright colors
   bright:
-    black:   '#5c6370'
-    red:     '#e06c75'
-    green:   '#98c379'
-    yellow:  '#e5c07b'
-    blue:    '#61afef'
-    magenta: '#c678dd'
-    cyan:    '#56b6c2'
-    white:   '#abb2bf'
+    black:   '#75715e'
+    red:     '#f92672'
+    green:   '#a6e22e'
+    yellow:  '#f4bf75'
+    blue:    '#66d9ef'
+    magenta: '#ae81ff'
+    cyan:    '#2aa198'
+    white:   '#e8eced'
 
   # Dim colors
   #
