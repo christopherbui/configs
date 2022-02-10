@@ -192,7 +192,7 @@ color={
 # Layout defaults
 layout_theme = {"border_width":4,
 "margin":8,
-"border_focus":color["cyan"],
+"border_focus":"000000",
 "border_normal":"000000"}
 
 layouts = [
@@ -204,7 +204,7 @@ layouts = [
 
 # Widget defaults
 widget_defaults = dict(
-    font='FiraCode Nerd Font Bold',
+    font='FiraCode Nerd Font',
     fontsize=18,
     padding=3
 )
@@ -218,18 +218,19 @@ screens = [
                 widget.GroupBox(
                     font="FiraCode Nerd Font",
                     highlight_method="line",
-                    highlight_color=background,
+                    highlight_color=background+"00",
                     rounded=False,
                     padding_x=5,
                     padding_y=4,
-                    active=foreground,
-                    inactive="#988BA2",
-                    this_current_screen_border=color["cyan"],
+                    active=color["white"],
+                    inactive=color["black"],
+                    this_current_screen_border=color["blue"],
                     urgent_border=color["red"],
                     disable_drag=True,
                     margin_y=3,
                     spacing=4,
                     use_mouse_wheel=False
+                    #hide_unused=True
                 ),
                 widget.Sep(
                     linewidth=0,
@@ -264,14 +265,14 @@ screens = [
                 ),
                 widget.WidgetBox(
                     font='FontAwesome5 Free',
-                    foreground=color["white"],
-                    fontsize=20,
+                    foreground=color["yellow"],
+                    fontsize=18,
                     close_button_location='right',
                     text_closed='',
                     text_open='',
                     widgets=[
                         widget.Battery(
-                            foreground=color["white"],
+                            foreground=color["yellow"],
                             charge_char="",
                             discharge_char="",
                             low_foreground=color["red"],
@@ -289,14 +290,14 @@ screens = [
                 ),
                 widget.WidgetBox(
                     font='FontAwesome5 Free',
-                    foreground=color["white"],
-                    fontsize=20,
+                    foreground=color["green"],
+                    fontsize=18,
                     close_button_location='right',
                     text_closed='',
                     text_open='',
                     widgets=[
                         widget.Memory(
-                            foreground=color["white"],
+                            foreground=color["green"],
                             measure_mem="G",
                             format="{MemUsed:.2f} GB",
                             #mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("alacritty -e htop")},
@@ -312,14 +313,14 @@ screens = [
                 ),
                 widget.WidgetBox(
                     font='FontAwesome5 Free',
-                    foreground=color["white"],
-                    fontsize=20,
+                    foreground=color["blue"],
+                    fontsize=18,
                     close_button_location='right',
                     text_closed='',
                     text_open='',
                     widgets=[
                         widget.PulseVolume(
-                            foreground=color["white"],
+                            foreground=color["blue"],
                             padding=10
                         )
                     ]
@@ -332,15 +333,15 @@ screens = [
                 ),
                 widget.WidgetBox(
                     font='FontAwesome5 Free',
-                    foreground=color["white"],
-                    fontsize=20,
+                    foreground=color["magenta"],
+                    fontsize=18,
                     close_button_location='right',
                     text_closed='',
                     text_open='',
                     widgets=[
                         widget.Clock(
                             format="%a %b %d",
-                            foreground=color["white"],
+                            foreground=color["magenta"],
                             #mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("alacritty -e /home/alphard/.config/qtile/calendar.sh")},
                             padding=10
                         )
@@ -354,8 +355,8 @@ screens = [
                 ),
                 widget.WidgetBox(
                     font='FontAwesome5 Free',
-                    foreground=color["white"],
-                    fontsize=20,
+                    foreground=color["red"],
+                    fontsize=18,
                     close_button_location='right',
                     text_closed='',
                     text_open='',
@@ -399,12 +400,12 @@ screens = [
                     foreground=foreground
                 ),
             ],
-            32,
+            34,
             border_width=[4, 4, 4, 4],
             border_color=["000000", "000000", "000000", "000000"],
-            background = background + "CC",
+            background = background + "E6",
             opacity = 1,
-            margin=[6, 8, 0, 8]
+            margin=[8, 8, 0, 8]
         )
     ),
 ]
