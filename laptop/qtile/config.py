@@ -81,7 +81,7 @@ keys = [
     Key(["control", "shift"], "XF86MonBrightnessDown", lazy.spawn("brightnessctl set 1")),
 
     # Nightlight
-    Key([mod], "n", lazy.spawn("redshift -P -O 5800")),
+    Key([mod], "n", lazy.spawn("redshift -P -O 5600")),
     Key([mod, "shift"], "n", lazy.spawn("redshift -x")),
 
     # Screenshot
@@ -175,25 +175,25 @@ for i in groups:
     ])
 
 # Colors
-background = "#272822"
-foreground = "#f6f7ec"
+background = "#29283b"
+foreground = "#b3b0d6"
 
 color={
-"black":  "#75715e",
-"red":    "#f92672",
-"green":  "#a6e22e",
-"yellow": "#f4bf75",
-"blue":   "#66d9ef",
-"magenta":"#ae81ff",
-"cyan":   "#2aa198",
-"white":  "#e8eced",
+"black":  "#535178",
+"red":    "#ef6487",
+"green":  "#5eca89",
+"yellow": "#fdd877",
+"blue":   "#65aef7",
+"magenta":"#aa7ff0",
+"cyan":   "#43c1be",
+"white":  "#ffffff",
 }
 
 # Layout defaults
 layout_theme = {"border_width":4,
 "margin":8,
-"border_focus":"000000",
-"border_normal":"000000"}
+"border_focus":"#000000",
+"border_normal":color["black"]}
 
 layouts = [
     layout.MonadTall(**layout_theme),
@@ -206,7 +206,7 @@ layouts = [
 widget_defaults = dict(
     font='FiraCode Nerd Font',
     fontsize=18,
-    padding=3
+    padding=0
 )
 
 extension_defaults = widget_defaults.copy()
@@ -223,9 +223,9 @@ screens = [
                     padding_x=5,
                     padding_y=4,
                     active=color["white"],
-                    inactive=color["black"],
-                    this_current_screen_border=color["blue"],
-                    urgent_border=color["red"],
+                    inactive="#7c818c",
+                    this_current_screen_border=color["red"],
+                    urgent_border=color["white"],
                     disable_drag=True,
                     margin_y=3,
                     spacing=4,
@@ -257,137 +257,105 @@ screens = [
                 widget.Systray(
                     icon_size=24
                 ),
-                widget.Sep(
-                    linewidth=0,
-                    size_percent=60,
-                    padding=34,
-                    foreground=foreground
+                widget.Memory(
+                    foreground=color["white"],
+                    measure_mem="G",
+                    format="{MemUsed:.2f} GB"
                 ),
-                widget.WidgetBox(
-                    font='FontAwesome5 Free',
-                    foreground=color["yellow"],
-                    fontsize=18,
-                    close_button_location='right',
-                    text_closed='',
-                    text_open='',
-                    widgets=[
-                        widget.Battery(
-                            foreground=color["yellow"],
-                            charge_char="",
-                            discharge_char="",
-                            low_foreground=color["red"],
-                            low_percentage=0.25,
-                            format="{char} {percent:2.0%}",
-                            padding=10
-                        )
-                    ]
-                ),
-                widget.Sep(
-                    linewidth=0,
-                    size_percent=60,
-                    padding=34,
-                    foreground=foreground
-                ),
-                widget.WidgetBox(
-                    font='FontAwesome5 Free',
+                widget.TextBox(
+                    font="FontAwesome5 Free",
                     foreground=color["green"],
-                    fontsize=18,
-                    close_button_location='right',
-                    text_closed='',
-                    text_open='',
-                    widgets=[
-                        widget.Memory(
-                            foreground=color["green"],
-                            measure_mem="G",
-                            format="{MemUsed:.2f} GB",
-                            #mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("alacritty -e htop")},
-                            padding=10
-                        )
-                    ]
+                    text="",
+                    padding=12
                 ),
                 widget.Sep(
                     linewidth=0,
                     size_percent=60,
-                    padding=34,
+                    padding=16,
                     foreground=foreground
                 ),
-                widget.WidgetBox(
-                    font='FontAwesome5 Free',
+                widget.Battery(
+                    foreground=color["white"],
+                    low_foreground=color["red"],
+                    low_percentage=0.25,
+                    format="{percent:2.0%}"
+                ),
+                widget.Battery(
+                    font="FontAwesome5 Free",
+                    foreground=color["yellow"],
+                    charge_char="",
+                    discharge_char="",
+                    low_foreground=color["red"],
+                    low_percentage=0.25,
+                    format="{char}",
+                    padding=12
+                ),
+                widget.Sep(
+                    linewidth=0,
+                    size_percent=60,
+                    padding=16,
+                    foreground=foreground
+                ),
+                widget.PulseVolume(
+                    foreground=color["white"],
+                ),
+                widget.TextBox(
+                    font="FontAwesome5 Free",
                     foreground=color["blue"],
-                    fontsize=18,
-                    close_button_location='right',
-                    text_closed='',
-                    text_open='',
-                    widgets=[
-                        widget.PulseVolume(
-                            foreground=color["blue"],
-                            padding=10
-                        )
-                    ]
+                    text="",
+                    padding=12
                 ),
                 widget.Sep(
                     linewidth=0,
                     size_percent=60,
-                    padding=34,
+                    padding=16,
                     foreground=foreground
                 ),
-                widget.WidgetBox(
-                    font='FontAwesome5 Free',
-                    foreground=color["magenta"],
-                    fontsize=18,
-                    close_button_location='right',
-                    text_closed='',
-                    text_open='',
-                    widgets=[
-                        widget.Clock(
-                            format="%a %b %d",
-                            foreground=color["magenta"],
-                            #mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("alacritty -e /home/alphard/.config/qtile/calendar.sh")},
-                            padding=10
-                        )
-                    ]
+                widget.Clock(
+                    format="%a %b %d",
+                    foreground=color["white"],
                 ),
                 widget.Sep(
                     linewidth=0,
                     size_percent=60,
-                    padding=34,
+                    padding=12,
                     foreground=foreground
                 ),
                 widget.WidgetBox(
-                    font='FontAwesome5 Free',
-                    foreground=color["red"],
-                    fontsize=18,
-                    close_button_location='right',
-                    text_closed='',
-                    text_open='',
+                    font="FontAwesome5 Free",
+                    foreground="#f58a58",
+                    fontsize=22,
+                    close_button_location="right",
+                    text_closed="",
+                    text_open="",
                     widgets=[
                         widget.TextBox(
                             text="lock",
-                            foreground=color["white"],
+                            foreground=color["blue"],
                             mouse_callbacks={"Button1": lazy.spawn("betterlockscreen -l --off 60")},
                             padding=10
                         ),
                         widget.TextBox(
                             text="logout",
-                            foreground=color["white"],
+                            foreground=color["magenta"],
                             mouse_callbacks={"Button1": lazy.shutdown()},
                             padding=10
                         ),
                         widget.TextBox(
                             text="suspend",
-                            foreground=color["white"],
+                            foreground=color["yellow"],
                             mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("betterlockscreen -s")},
                             padding=10
                         ),
                         widget.TextBox(
                             text="reboot",
-                            foreground=color["white"],
+                            foreground=color["green"],
                             mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("reboot")},
                             padding=10
                         ),
                         widget.TextBox(
                             text="shutdown",
-                            foreground=color["white"],
+                            foreground=color["red"],
                             mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("shutdown now")},
                             padding=10
                         )
@@ -396,14 +364,14 @@ screens = [
                 widget.Sep(
                     linewidth=0,
                     size_percent=60,
-                    padding=16,
+                    padding=10,
                     foreground=foreground
                 ),
             ],
             34,
             border_width=[4, 4, 4, 4],
-            border_color=["000000", "000000", "000000", "000000"],
-            background = background + "E6",
+            border_color=["#000000"]*4,
+            background = background + "DE",
             opacity = 1,
             margin=[8, 8, 0, 8]
         )

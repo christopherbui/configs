@@ -117,11 +117,6 @@ eval "$(pyenv init --path)"
 
 eval "$(pyenv init -)"
 
-#if command -v pyenv 1>/dev/null 2>&1; then
-#  eval "$(pyenv init -)"
-#fi
-
 alias ls="lsd"
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+alias ipp="curl ipinfo.io"
+alias cpuf="auto-cpufreq"
