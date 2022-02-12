@@ -329,36 +329,53 @@ screens = [
                     text_closed="",
                     text_open="",
                     widgets=[
+                        widget.Sep(
+                            linewidth=2,
+                            size_percent=70,
+                            padding=14,
+                            foreground=foreground
+                        ),
                         widget.TextBox(
-                            text="lock",
+                            text="",
+                            font="FontAwesome5 Free",
                             foreground=color["blue"],
                             mouse_callbacks={"Button1": lazy.spawn("betterlockscreen -l --off 60")},
                             padding=10
                         ),
                         widget.TextBox(
-                            text="logout",
+                            text="",
+                            font="FontAwesome5 Free",
                             foreground=color["magenta"],
                             mouse_callbacks={"Button1": lazy.shutdown()},
                             padding=10
                         ),
                         widget.TextBox(
-                            text="suspend",
+                            text="",
+                            font="FontAwesome5 Free",
                             foreground=color["yellow"],
                             mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("betterlockscreen -s")},
                             padding=10
                         ),
                         widget.TextBox(
-                            text="reboot",
+                            text="",
+                            font="FontAwesome 5 Free",
                             foreground=color["green"],
                             mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("reboot")},
                             padding=10
                         ),
                         widget.TextBox(
-                            text="shutdown",
+                            text="",
+                            font="FontAwesome 5 Free",
                             foreground=color["red"],
                             mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("shutdown now")},
                             padding=10
-                        )
+                        ),
+                        widget.Sep(
+                            linewidth=0,
+                            size_percent=60,
+                            padding=10,
+                            foreground=foreground
+                        ),
                     ]
                 ),
                 widget.Sep(
