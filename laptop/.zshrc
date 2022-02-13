@@ -117,6 +117,7 @@ eval "$(pyenv init --path)"
 
 eval "$(pyenv init -)"
 
+alias nv="nvim"
 alias ls="lsd"
 alias ipp="curl ipinfo.io"
 alias cpuf="auto-cpufreq"
