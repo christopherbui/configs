@@ -67,7 +67,7 @@ window:
   #
   # Window opacity as a floating point number from `0.0` to `1.0`.
   # The value `0.0` is completely transparent and `1.0` is opaque.
-  opacity: 0.87
+  opacity: 0.9
 
   # Startup Mode (changes require restart)
   #
@@ -185,8 +185,8 @@ font:
 colors:
   # Default colors
   primary:
-    background: '#29283b'
-    foreground: '#b3b0d6'
+    background: '#20262A'
+    foreground: '#d6dbe5'
 
     # Bright and dim foreground colors
     #
@@ -274,24 +274,24 @@ colors:
 
   # Normal colors
   normal:
-    black:   '#535178'
-    red:     '#ef6487'
-    green:   '#5eca89'
-    yellow:  '#fdd877'
-    blue:    '#65aef7'
-    magenta: '#aa7ff0'
-    cyan:    '#43c1be'
-    white:   '#ffffff'
+    black:   '#20262A'
+    red:     '#f81118'
+    green:   '#2dc55e'
+    yellow:  '#ecba0f'
+    blue:    '#2a84d2'
+    magenta: '#DA67C3'
+    cyan:    '#10BFD6'
+    white:   '#d6dbe5'
 
   # Bright colors
   bright:
-    black:   '#535178'
-    red:     '#ef6487'
-    green:   '#5eca89'
-    yellow:  '#fdd877'
-    blue:    '#65aef7'
-    magenta: '#aa7ff0'
-    cyan:    '#43c1be'
+    black:   '#465459'
+    red:     '#f81118'
+    green:   '#2dc55e'
+    yellow:  '#ecba0f'
+    blue:    '#2a84d2'
+    magenta: '#DA67C3'
+    cyan:    '#10BFD6'
     white:   '#ffffff'
 
   # Dim colors

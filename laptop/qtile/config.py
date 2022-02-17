@@ -43,10 +43,10 @@ def autostart():
 
 home = os.path.expanduser("~")
 
-mod = "mod1"
+mod = "mod4"
 terminal = "alacritty"
-app_launcher = "rofi -combi-modi drun -font 'Fira Code Nerd Font 18' -show drun -icon-theme 'Papirus' -show-icons -width 48 -theme-str 'element-icon {size:2.8ch;}' -lines 10"
-browser = "firefox"
+app_launcher = "rofi -combi-modi drun -font 'FiraCode Nerd Font 16' -show drun -icon-theme 'Papirus' -show-icons -width 48 -theme-str 'element-icon {size:2.8ch;}' -lines 10"
+browser = "librewolf"
 file_manager = "nautilus"
 music = "spotify --force-device-scale-factor=1.2"
 
@@ -175,25 +175,25 @@ for i in groups:
     ])
 
 # Colors
-background = "#29283b"
-foreground = "#b3b0d6"
+background = "#20262A"
+foreground = "#d6dbe5"
 
 color={
-"black":  "#535178",
-"red":    "#ef6487",
-"green":  "#5eca89",
-"yellow": "#fdd877",
-"blue":   "#65aef7",
-"magenta":"#aa7ff0",
-"cyan":   "#43c1be",
+"black":  "#465459",
+"red":    "#f81118",
+"green":  "#2dc55e",
+"yellow": "#ecba0f",
+"blue":   "#2a84d2",
+"magenta":"#DA67C3",
+"cyan":   "#10BFD6",
 "white":  "#ffffff",
 }
 
 # Layout defaults
 layout_theme = {"border_width":4,
 "margin":8,
-"border_focus":"#000000",
-"border_normal":color["black"]}
+"border_focus":foreground,
+"border_normal":"#13171A"}
 
 layouts = [
     layout.MonadTall(**layout_theme),
@@ -222,10 +222,10 @@ screens = [
                     rounded=False,
                     padding_x=5,
                     padding_y=4,
-                    active=color["white"],
+                    active=foreground,
                     inactive="#7c818c",
-                    this_current_screen_border=color["red"],
-                    urgent_border=color["white"],
+                    this_current_screen_border=color["cyan"],
+                    urgent_border=color["red"],
                     disable_drag=True,
                     margin_y=3,
                     spacing=4,
@@ -244,21 +244,20 @@ screens = [
                     padding=10
                 ),
                 widget.Prompt(
-                    foreground=color["white"]
-                ),
-                widget.Spacer(),
-                widget.Clock(
-                    format="%H:%M:%S",
-                    #format="%H:%M",
-                    foreground=color["white"],
-                    padding=6
+                    foreground=color["cyan"]
                 ),
                 widget.Spacer(),
                 widget.Systray(
                     icon_size=24
                 ),
+                widget.Sep(
+                    linewidth=0,
+                    size_percent=60,
+                    padding=16,
+                    foreground=foreground
+                ),
                 widget.Memory(
-                    foreground=color["white"],
+                    foreground=foreground,
                     measure_mem="G",
                     format="{MemUsed:.2f} GB"
                 ),
@@ -275,7 +274,7 @@ screens = [
                     foreground=foreground
                 ),
                 widget.Battery(
-                    foreground=color["white"],
+                    foreground=foreground,
                     low_foreground=color["red"],
                     low_percentage=0.25,
                     format="{percent:2.0%}"
@@ -297,7 +296,7 @@ screens = [
                     foreground=foreground
                 ),
                 widget.PulseVolume(
-                    foreground=color["white"],
+                    foreground=foreground,
                 ),
                 widget.TextBox(
                     font="FontAwesome5 Free",
@@ -312,8 +311,8 @@ screens = [
                     foreground=foreground
                 ),
                 widget.Clock(
-                    format="%a %b %d",
-                    foreground=color["white"],
+                    format="%b %d  %H:%M:%S",
+                    foreground=foreground,
                 ),
                 widget.Sep(
                     linewidth=0,
@@ -322,51 +321,51 @@ screens = [
                     foreground=foreground
                 ),
                 widget.WidgetBox(
-                    font="FontAwesome5 Free",
-                    foreground="#f58a58",
-                    fontsize=22,
+                    font="FiraCode Nerd Font",
+                    fontsize=20,
+                    foreground=color["cyan"],
                     close_button_location="right",
-                    text_closed="",
-                    text_open="",
+                    text_closed=" ",
+                    text_open=" ",
                     widgets=[
-                        widget.Sep(
-                            linewidth=2,
-                            size_percent=70,
-                            padding=14,
-                            foreground=foreground
+                        #widget.Sep(
+                        #    linewidth=2,
+                        #    size_percent=70,
+                        #    padding=14,
+                        #    foreground=foreground
+                        #),
+                        widget.TextBox(
+                            text="",
+                            foreground=color["cyan"],
+                            padding=14
                         ),
                         widget.TextBox(
-                            text="",
-                            font="FontAwesome5 Free",
-                            foreground=color["blue"],
+                            text="lock",
+                            foreground=foreground,
                             mouse_callbacks={"Button1": lazy.spawn("betterlockscreen -l --off 60")},
                             padding=10
                         ),
                         widget.TextBox(
-                            text="",
-                            font="FontAwesome5 Free",
-                            foreground=color["magenta"],
+                            text="logout",
+                            foreground=foreground,
                             mouse_callbacks={"Button1": lazy.shutdown()},
                             padding=10
                         ),
                         widget.TextBox(
-                            text="",
-                            font="FontAwesome5 Free",
-                            foreground=color["yellow"],
+                            text="suspend",
+                            foreground=foreground,
                             mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("betterlockscreen -s")},
                             padding=10
                         ),
                         widget.TextBox(
-                            text="",
-                            font="FontAwesome 5 Free",
-                            foreground=color["green"],
+                            text="reboot",
+                            foreground=foreground,
                             mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("reboot")},
                             padding=10
                         ),
                         widget.TextBox(
-                            text="",
-                            font="FontAwesome 5 Free",
-                            foreground=color["red"],
+                            text="shutdown",
+                            foreground=foreground,
                             mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("shutdown now")},
                             padding=10
                         ),
@@ -381,16 +380,16 @@ screens = [
                 widget.Sep(
                     linewidth=0,
                     size_percent=60,
-                    padding=10,
+                    padding=4,
                     foreground=foreground
                 ),
             ],
             34,
-            border_width=[4, 4, 4, 4],
-            border_color=["#000000"]*4,
-            background = background + "DE",
+            border_width=[0, 0, 3, 0],
+            border_color=["13171A"]*4,
+            background = background + "E6",
             opacity = 1,
-            margin=[8, 8, 0, 8]
+            margin=[0, 0, 0, 0]
         )
     ),
 ]
