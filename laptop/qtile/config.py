@@ -48,6 +48,7 @@ terminal = "alacritty"
 app_launcher = "rofi -combi-modi drun -font 'FiraCode Nerd Font 16' -show drun -icon-theme 'Papirus' -show-icons -width 48 -theme-str 'element-icon {size:2.8ch;}' -lines 10"
 browser = "librewolf"
 file_manager = "nautilus"
+email = "evolution"
 music = "spotify --force-device-scale-factor=1.2"
 
 
@@ -104,6 +105,9 @@ keys = [
 
     # PDF Reader
     Key([mod], "p", lazy.spawn("evince")),
+
+    # Email
+    Key([mod], "e", lazy.spawn(email)),
 
     # Discord
     Key([mod], "d", lazy.spawn("discord")),
@@ -215,130 +219,20 @@ screens = [
     Screen(
         top=bar.Bar(
             [
-                widget.GroupBox(
-                    font="FiraCode Nerd Font",
-                    highlight_method="line",
-                    highlight_color=background+"00",
-                    rounded=False,
-                    padding_x=5,
-                    padding_y=4,
-                    active=foreground,
-                    inactive="#7c818c",
-                    this_current_screen_border=color["cyan"],
-                    urgent_border=color["red"],
-                    disable_drag=True,
-                    margin_y=3,
-                    spacing=4,
-                    use_mouse_wheel=False
-                    #hide_unused=True
-                ),
-                widget.Sep(
-                    linewidth=0,
-                    padding=10
-                ),
-                widget.CurrentLayoutIcon(
-                    scale=0.7
-                ),
-                widget.Sep(
-                    linewidth=0,
-                    padding=10
-                ),
-                widget.Prompt(
-                    foreground=color["cyan"]
-                ),
-                widget.Spacer(),
-                widget.Systray(
-                    icon_size=24
-                ),
                 widget.Sep(
                     linewidth=0,
                     size_percent=60,
-                    padding=16,
-                    foreground=foreground
-                ),
-                widget.Memory(
-                    foreground=foreground,
-                    measure_mem="G",
-                    format="{MemUsed:.2f} GB"
-                ),
-                widget.TextBox(
-                    font="FontAwesome5 Free",
-                    foreground=color["green"],
-                    text="",
-                    padding=12
-                ),
-                widget.Sep(
-                    linewidth=0,
-                    size_percent=60,
-                    padding=16,
-                    foreground=foreground
-                ),
-                widget.Battery(
-                    foreground=foreground,
-                    low_foreground=color["red"],
-                    low_percentage=0.25,
-                    format="{percent:2.0%}"
-                ),
-                widget.Battery(
-                    font="FontAwesome5 Free",
-                    foreground=color["yellow"],
-                    charge_char="",
-                    discharge_char="",
-                    low_foreground=color["red"],
-                    low_percentage=0.25,
-                    format="{char}",
-                    padding=12
-                ),
-                widget.Sep(
-                    linewidth=0,
-                    size_percent=60,
-                    padding=16,
-                    foreground=foreground
-                ),
-                widget.PulseVolume(
-                    foreground=foreground,
-                ),
-                widget.TextBox(
-                    font="FontAwesome5 Free",
-                    foreground=color["blue"],
-                    text="",
-                    padding=12
-                ),
-                widget.Sep(
-                    linewidth=0,
-                    size_percent=60,
-                    padding=16,
-                    foreground=foreground
-                ),
-                widget.Clock(
-                    format="%b %d  %H:%M:%S",
-                    foreground=foreground,
-                ),
-                widget.Sep(
-                    linewidth=0,
-                    size_percent=60,
-                    padding=12,
+                    padding=8,
                     foreground=foreground
                 ),
                 widget.WidgetBox(
                     font="FiraCode Nerd Font",
                     fontsize=20,
                     foreground=color["cyan"],
-                    close_button_location="right",
+                    close_button_location="left",
                     text_closed=" ",
                     text_open=" ",
                     widgets=[
-                        #widget.Sep(
-                        #    linewidth=2,
-                        #    size_percent=70,
-                        #    padding=14,
-                        #    foreground=foreground
-                        #),
-                        widget.TextBox(
-                            text="",
-                            foreground=color["cyan"],
-                            padding=14
-                        ),
                         widget.TextBox(
                             text="lock",
                             foreground=foreground,
@@ -380,9 +274,152 @@ screens = [
                 widget.Sep(
                     linewidth=0,
                     size_percent=60,
-                    padding=4,
+                    padding=6,
                     foreground=foreground
                 ),
+                widget.GroupBox(
+                    font="FiraCode Nerd Font",
+                    highlight_method="line",
+                    highlight_color=background+"00",
+                    rounded=False,
+                    padding_x=5,
+                    padding_y=4,
+                    active=foreground,
+                    inactive="#7c818c",
+                    this_current_screen_border=color["cyan"],
+                    urgent_border=color["red"],
+                    disable_drag=True,
+                    margin_y=3,
+                    spacing=4,
+                    use_mouse_wheel=False
+                    #hide_unused=True
+                ),
+                widget.Sep(
+                    linewidth=0,
+                    padding=10
+                ),
+                widget.CurrentLayoutIcon(
+                    scale=0.65
+                ),
+                widget.Sep(
+                    linewidth=0,
+                    padding=10
+                ),
+                widget.TextBox(
+                    font="FontAwesome5 Free",
+                    foreground=color["cyan"],
+                    text="",
+                    padding=12
+                ),
+                widget.OpenWeather(
+                    foreground=foreground,
+                    format="{main_temp} °{units_temperature}",
+                    metric=False,
+                    zip="92704"
+                ),
+                widget.Sep(
+                    linewidth=0,
+                    padding=16
+                ),
+                widget.Prompt(
+                    foreground=color["cyan"]
+                ),
+                widget.Spacer(),
+                widget.Systray(
+                    icon_size=24
+                ),
+                widget.Sep(
+                    linewidth=0,
+                    size_percent=60,
+                    padding=16,
+                    foreground=foreground
+                ),
+                widget.TextBox(
+                    font="FontAwesome5 Free",
+                    foreground=color["green"],
+                    text="",
+                    padding=12
+                ),
+                widget.Memory(
+                    foreground=foreground,
+                    measure_mem="G",
+                    format="{MemUsed:.2f} GB"
+                ),
+                widget.Sep(
+                    linewidth=0,
+                    size_percent=60,
+                    padding=16,
+                    foreground=foreground
+                ),
+                widget.Battery(
+                    font="FontAwesome5 Free",
+                    foreground=color["yellow"],
+                    charge_char="",
+                    discharge_char="",
+                    low_foreground=color["red"],
+                    low_percentage=0.25,
+                    format="{char}",
+                    padding=12
+                ),
+                widget.Battery(
+                    foreground=foreground,
+                    low_foreground=color["red"],
+                    low_percentage=0.25,
+                    format="{percent:2.0%}"
+                ),
+                widget.Sep(
+                    linewidth=0,
+                    size_percent=60,
+                    padding=16,
+                    foreground=foreground
+                ),
+                widget.TextBox(
+                    font="FontAwesome5 Free",
+                    foreground=color["blue"],
+                    text="",
+                    padding=12
+                ),    
+                widget.PulseVolume(
+                    foreground=foreground,
+                ),
+                widget.Sep(
+                    linewidth=0,
+                    size_percent=60,
+                    padding=16,
+                    foreground=foreground
+                ),
+                widget.TextBox(
+                    font="FontAwesome5 Free",
+                    foreground=color["magenta"],
+                    text="",
+                    padding=12
+                ),
+                widget.Clock(
+                    format="%a %b %d",
+                    foreground=foreground,
+                ),
+                widget.Sep(
+                    linewidth=0,
+                    size_percent=60,
+                    padding=16,
+                    foreground=foreground
+                ),
+                widget.TextBox(
+                    font="FontAwesome5 Free",
+                    foreground=color["red"],
+                    text="",
+                    padding=12
+                ),
+                widget.Clock(
+                    format="%H:%M:%S",
+                    foreground=foreground
+                ),
+                widget.Sep(
+                    linewidth=0,
+                    size_percent=60,
+                    padding=12,
+                    foreground=foreground
+                )
             ],
             34,
             border_width=[0, 0, 3, 0],
