@@ -219,64 +219,6 @@ screens = [
     Screen(
         top=bar.Bar(
             [
-                widget.Sep(
-                    linewidth=0,
-                    size_percent=60,
-                    padding=8,
-                    foreground=foreground
-                ),
-                widget.WidgetBox(
-                    font="FiraCode Nerd Font",
-                    fontsize=20,
-                    foreground=color["cyan"],
-                    close_button_location="left",
-                    text_closed=" ",
-                    text_open=" ",
-                    widgets=[
-                        widget.TextBox(
-                            text="lock",
-                            foreground=foreground,
-                            mouse_callbacks={"Button1": lazy.spawn("betterlockscreen -l --off 60")},
-                            padding=10
-                        ),
-                        widget.TextBox(
-                            text="logout",
-                            foreground=foreground,
-                            mouse_callbacks={"Button1": lazy.shutdown()},
-                            padding=10
-                        ),
-                        widget.TextBox(
-                            text="suspend",
-                            foreground=foreground,
-                            mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("betterlockscreen -s")},
-                            padding=10
-                        ),
-                        widget.TextBox(
-                            text="reboot",
-                            foreground=foreground,
-                            mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("reboot")},
-                            padding=10
-                        ),
-                        widget.TextBox(
-                            text="shutdown",
-                            foreground=foreground,
-                            mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("shutdown now")},
-                            padding=10
-                        ),
-                        widget.Sep(
-                            linewidth=0,
-                            size_percent=60,
-                            padding=10,
-                            foreground=foreground
-                        ),
-                    ]
-                ),
-                widget.Sep(
-                    linewidth=0,
-                    size_percent=60,
-                    padding=6,
-                    foreground=foreground
-                ),
                 widget.GroupBox(
                     font="FiraCode Nerd Font",
                     highlight_method="line",
@@ -300,22 +242,6 @@ screens = [
                 ),
                 widget.CurrentLayoutIcon(
                     scale=0.65
-                ),
-                widget.Sep(
-                    linewidth=0,
-                    padding=10
-                ),
-                widget.TextBox(
-                    font="FontAwesome5 Free",
-                    foreground=color["cyan"],
-                    text="",
-                    padding=12
-                ),
-                widget.OpenWeather(
-                    foreground=foreground,
-                    format="{main_temp} °{units_temperature}",
-                    metric=False,
-                    zip="92704"
                 ),
                 widget.Sep(
                     linewidth=0,
