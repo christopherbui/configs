@@ -1,0 +1,16 @@
+# Created by newuser for 5.8.1
+PROMPT="%F{green}❯%f %B%F{cyan}%1~%b%f "
+
+export PF_INFO="ascii title os kernel pkgs de memory palette"
+export PF_COL1=6
+
+export CARGO="$HOME/.cargo/bin"
+export PATH="$CARGO:$PATH"
+
+pfetch
+
+source "/opt/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+
+alias ls="lsd"
+alias ipp="curl ipinfo.io"
+alias cpuf="auto-cpufreq"
