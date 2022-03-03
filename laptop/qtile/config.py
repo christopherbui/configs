@@ -179,24 +179,24 @@ for i in groups:
     ])
 
 # Colors
-background = "#20262A"
+background = "#282C2F"
 foreground = "#d6dbe5"
 
 color={
 "black":  "#465459",
-"red":    "#f81118",
-"green":  "#2dc55e",
-"yellow": "#ecba0f",
-"blue":   "#2a84d2",
-"magenta":"#DA67C3",
-"cyan":   "#10BFD6",
+"red":    "#D32F2F",
+"green":  "#8BC34A",
+"yellow": "#FBC02D",
+"blue":   "#0288D1",
+"magenta":"#9575CD",
+"cyan":   "#00BCD4",
 "white":  "#ffffff",
 }
 
 # Layout defaults
-layout_theme = {"border_width":4,
+layout_theme = {"border_width":3,
 "margin":8,
-"border_focus":foreground,
+"border_focus":color["cyan"],
 "border_normal":"#13171A"}
 
 layouts = [
@@ -252,7 +252,8 @@ screens = [
                 ),
                 widget.Spacer(),
                 widget.Systray(
-                    icon_size=24
+                    icon_size=24,
+                    background=background + "E6"
                 ),
                 widget.Sep(
                     linewidth=0,
@@ -349,7 +350,7 @@ screens = [
             ],
             34,
             border_width=[0, 0, 3, 0],
-            border_color=["13171A"]*4,
+            border_color=[background]*4,
             background = background + "E6",
             opacity = 1,
             margin=[0, 0, 0, 0]
