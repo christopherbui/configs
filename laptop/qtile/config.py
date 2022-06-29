@@ -45,10 +45,10 @@ home = os.path.expanduser("~")
 
 mod = "mod4"
 terminal = "alacritty"
-app_launcher = "rofi -combi-modi drun -font 'FiraCode Nerd Font 16' -show drun -icon-theme 'Papirus' -show-icons -width 48 -theme-str 'element-icon {size:2.8ch;}' -lines 10"
-browser = "librewolf"
+app_launcher = "rofi -combi-modi drun -font 'FiraCode Nerd Font 16' -show drun -icon-theme 'ZorinBlue-Light' -show-icons -width 48 -theme-str 'element-icon {size:2.8ch;}' -lines 10"
+browser = "firefox"
 file_manager = "nautilus"
-email = "evolution"
+email = "mailspring"
 music = "spotify --force-device-scale-factor=1.2"
 
 
@@ -97,7 +97,7 @@ keys = [
     # Text Editor
     Key([mod], "g", lazy.spawn("gedit")),
 
-    # VS Code
+    # Code Editor
     Key([mod], "c", lazy.spawn("code")),
 
     # Typora
@@ -179,31 +179,31 @@ for i in groups:
     ])
 
 # Colors
-background = "#282C2F"
+background = "#1F2224"
 foreground = "#d6dbe5"
 
 color={
-"black":  "#465459",
-"red":    "#D32F2F",
-"green":  "#8BC34A",
-"yellow": "#FBC02D",
-"blue":   "#0288D1",
-"magenta":"#9575CD",
-"cyan":   "#00BCD4",
-"white":  "#ffffff",
+"black":  "#323232",
+"red":    "#D25252",
+"green":  "#7FE173",
+"yellow": "#FFC66D",
+"blue":   "#4099FF",
+"magenta":"#F680FF",
+"cyan":   "#BED6FF",
+"white":  "#EEEEEC",
 }
 
 # Layout defaults
 layout_theme = {"border_width":3,
-"margin":8,
-"border_focus":color["cyan"],
-"border_normal":"#13171A"}
+"margin":10,
+"border_focus":"#000000",
+"border_normal":color["cyan"]}
 
 layouts = [
     layout.MonadTall(**layout_theme),
     layout.MonadWide(**layout_theme),
-    layout.Stack(**layout_theme, num_stacks=1),
-    layout.Floating(**layout_theme),
+    layout.Stack(**layout_theme, num_stacks=1)
+    #layout.Floating(**layout_theme),
 ]
 
 # Widget defaults
@@ -226,9 +226,9 @@ screens = [
                     rounded=False,
                     padding_x=5,
                     padding_y=4,
-                    active=foreground,
+                    active=color["white"],
                     inactive="#7c818c",
-                    this_current_screen_border=color["cyan"],
+                    this_current_screen_border=color["magenta"],
                     urgent_border=color["red"],
                     disable_drag=True,
                     margin_y=3,
@@ -248,12 +248,13 @@ screens = [
                     padding=16
                 ),
                 widget.Prompt(
-                    foreground=color["cyan"]
+                    foreground=color["green"]
                 ),
                 widget.Spacer(),
                 widget.Systray(
-                    icon_size=24,
-                    background=background + "E6"
+                    icon_size=22,
+                    background=background + "E6",
+                    padding=6
                 ),
                 widget.Sep(
                     linewidth=0,
@@ -268,15 +269,15 @@ screens = [
                     padding=12
                 ),
                 widget.Memory(
-                    foreground=foreground,
+                    foreground=color["white"],
                     measure_mem="G",
                     format="{MemUsed:.2f} GB"
                 ),
                 widget.Sep(
-                    linewidth=0,
-                    size_percent=60,
-                    padding=16,
-                    foreground=foreground
+                    linewidth=1,
+                    size_percent=50,
+                    padding=32,
+                    foreground="#7c818c"
                 ),
                 widget.Battery(
                     font="FontAwesome5 Free",
@@ -285,74 +286,65 @@ screens = [
                     discharge_char="",
                     low_foreground=color["red"],
                     low_percentage=0.25,
-                    format="{char}",
-                    padding=12
+                    format="{char}"
+                    #padding=12
                 ),
                 widget.Battery(
-                    foreground=foreground,
+                    foreground=color["white"],
                     low_foreground=color["red"],
                     low_percentage=0.25,
-                    format="{percent:2.0%}"
+                    #charge_char="",
+                    #discharge_char="",
+                    format=" {percent:2.0%}"
                 ),
                 widget.Sep(
-                    linewidth=0,
-                    size_percent=60,
-                    padding=16,
-                    foreground=foreground
+                    linewidth=1,
+                    size_percent=50,
+                    padding=32,
+                    foreground="#7c818c"
                 ),
                 widget.TextBox(
                     font="FontAwesome5 Free",
                     foreground=color["blue"],
-                    text="",
-                    padding=12
+                    text=""
+                ),
+                widget.Sep(
+                    linewidth=0,
+                    size_percent=50,
+                    padding=12,
+                    foreground="#7c818c"
                 ),    
                 widget.PulseVolume(
-                    foreground=foreground,
+                    foreground=color["white"],
                 ),
                 widget.Sep(
-                    linewidth=0,
-                    size_percent=60,
-                    padding=16,
-                    foreground=foreground
-                ),
-                widget.TextBox(
-                    font="FontAwesome5 Free",
-                    foreground=color["magenta"],
-                    text="",
-                    padding=12
-                ),
-                widget.Clock(
-                    format="%a %b %d",
-                    foreground=foreground,
-                ),
-                widget.Sep(
-                    linewidth=0,
-                    size_percent=60,
-                    padding=16,
-                    foreground=foreground
+                    linewidth=1,
+                    size_percent=50,
+                    padding=32,
+                    foreground="#7c818c"
                 ),
                 widget.TextBox(
                     font="FontAwesome5 Free",
                     foreground=color["red"],
-                    text="",
-                    padding=12
+                    text=""
                 ),
                 widget.Clock(
-                    format="%H:%M:%S",
-                    foreground=foreground
-                ),
-                widget.Sep(
-                    linewidth=0,
-                    size_percent=60,
-                    padding=12,
-                    foreground=foreground
+                    format="%a %b %d  %H:%M:%S",
+                    foreground=color["white"],
+                    padding=12
                 )
+                # widget.Sep(
+                #     linewidth=0,
+                #     size_percent=60,
+                #     padding=12,
+                #     foreground=foreground
+                # )
             ],
-            34,
+            36,
             border_width=[0, 0, 3, 0],
-            border_color=[background]*4,
-            background = background + "E6",
-            opacity = 1,
+            border_color=["#000000"]*4,
+            background = background + "FF",
+            #opacity = 0.9,
             margin=[0, 0, 0, 0]
         )
     ),
